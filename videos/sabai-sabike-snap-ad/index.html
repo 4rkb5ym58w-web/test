@@ -1,0 +1,928 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Sabai Sabike — Snapchat ad</title>
+    <script src="vendor/gsap.min.js"></script>
+    <style>
+      :root {
+        --sand: #f3ede2;
+        --sand-deep: #e7dccb;
+        --ink: #0d3328;
+        --ink-soft: #3c5a50;
+        --green: #17803f;
+        --green-bright: #25d366;
+        --wa-header: #008069;
+        --wa-bg: #efe7dd;
+        --wa-sent: #d9fdd3;
+        --wa-text: #111b21;
+        --wa-meta: #56656e;
+        --wa-tick: #53bdeb;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: var(--sand);
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: var(--sand);
+        font-family: "Helvetica Neue", Helvetica, sans-serif;
+        color: var(--ink);
+      }
+      .clip {
+        position: absolute;
+        inset: 0;
+      }
+      .mono {
+        font-family: "Space Mono", monospace;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .display {
+        font-family: "Archivo Black", sans-serif;
+        font-weight: 400;
+        letter-spacing: -0.03em;
+      }
+
+      /* ---------- persistent background ---------- */
+      #bg-glow-a {
+        position: absolute;
+        width: 1300px;
+        height: 1300px;
+        left: -420px;
+        top: -380px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(31, 170, 89, 0.22) 0%, rgba(31, 170, 89, 0) 65%);
+      }
+      #bg-glow-b {
+        position: absolute;
+        width: 1200px;
+        height: 1200px;
+        right: -500px;
+        bottom: -300px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(232, 150, 70, 0.22) 0%, rgba(232, 150, 70, 0) 65%);
+      }
+      #bg-ghost {
+        position: absolute;
+        left: 0;
+        top: 760px;
+        width: 3000px;
+        font-family: "Archivo Black", sans-serif;
+        font-size: 420px;
+        line-height: 1;
+        white-space: nowrap;
+        color: var(--ink);
+        opacity: 0.06;
+      }
+      #bg-grain {
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(rgba(13, 51, 40, 0.09) 1.2px, transparent 1.4px);
+        background-size: 22px 22px;
+      }
+
+      /* ---------- scene A: WhatsApp chat ---------- */
+      #a-kicker {
+        position: absolute;
+        left: 80px;
+        right: 80px;
+        top: 150px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      #a-label {
+        font-size: 26px;
+        color: var(--green);
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      #a-label .rule {
+        display: block;
+        width: 64px;
+        height: 4px;
+        background: var(--green);
+      }
+      #a-title {
+        font-size: 86px;
+        line-height: 0.98;
+        color: var(--ink);
+      }
+      #phone {
+        position: absolute;
+        left: 110px;
+        top: 410px;
+        width: 860px;
+        height: 1460px;
+        border-radius: 86px;
+        background: #12201b;
+        padding: 18px;
+        box-shadow:
+          0 50px 100px rgba(13, 51, 40, 0.32),
+          inset 0 2px 4px rgba(255, 255, 255, 0.18);
+      }
+      #screen {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        border-radius: 70px;
+        overflow: hidden;
+        background: var(--wa-bg);
+      }
+      #wa-doodle {
+        position: absolute;
+        inset: 0;
+        opacity: 0.5;
+        background-image:
+          radial-gradient(circle at 20px 20px, rgba(120, 100, 70, 0.14) 6px, transparent 7px),
+          radial-gradient(circle at 70px 60px, rgba(120, 100, 70, 0.1) 10px, transparent 11px);
+        background-size: 110px 110px;
+      }
+      #wa-header {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 196px;
+        background: var(--wa-header);
+        color: #fff;
+        padding: 82px 34px 0 26px;
+        display: flex;
+        align-items: center;
+        gap: 18px;
+      }
+      #wa-back {
+        width: 34px;
+        height: 34px;
+        display: block;
+      }
+      #wa-avatar {
+        width: 84px;
+        height: 84px;
+        border-radius: 50%;
+        background: #fff;
+        color: var(--ink);
+        display: grid;
+        place-items: center;
+        font-size: 46px;
+        flex: none;
+      }
+      #wa-who {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+      #wa-name {
+        font-size: 38px;
+        font-weight: 700;
+      }
+      #wa-status {
+        position: relative;
+        height: 32px;
+        font-size: 27px;
+      }
+      #wa-status span {
+        position: absolute;
+        left: 0;
+        top: 0;
+        white-space: nowrap;
+        color: rgba(255, 255, 255, 0.9);
+      }
+      #wa-icons {
+        display: flex;
+        gap: 34px;
+      }
+      #wa-icons svg {
+        width: 40px;
+        height: 40px;
+        display: block;
+      }
+      #wa-view {
+        position: absolute;
+        left: 0;
+        top: 196px;
+        width: 100%;
+        height: 1094px;
+        overflow: hidden;
+      }
+      #wa-col {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        padding: 30px 26px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .msg {
+        display: flex;
+        width: 100%;
+      }
+      .msg.sent {
+        justify-content: flex-end;
+      }
+      .msg.recv {
+        justify-content: flex-start;
+      }
+      .bub {
+        position: relative;
+        max-width: 640px;
+        padding: 16px 22px 14px 24px;
+        border-radius: 22px;
+        font-size: 35px;
+        line-height: 1.32;
+        color: var(--wa-text);
+        box-shadow: 0 2px 2px rgba(11, 20, 26, 0.1);
+      }
+      .sent .bub {
+        background: var(--wa-sent);
+        border-top-right-radius: 6px;
+        transform-origin: 100% 0%;
+      }
+      .recv .bub {
+        background: #fff;
+        border-top-left-radius: 6px;
+        transform-origin: 0% 0%;
+      }
+      .meta {
+        float: right;
+        margin: 14px 0 -4px 18px;
+        font-size: 22px;
+        color: var(--wa-meta);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .ticks {
+        position: relative;
+        width: 34px;
+        height: 22px;
+        display: block;
+      }
+      .ticks svg {
+        position: absolute;
+        inset: 0;
+        width: 34px;
+        height: 22px;
+      }
+      .dots {
+        display: flex;
+        gap: 10px;
+        padding: 26px 30px;
+      }
+      .dots i {
+        display: block;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: #8696a0;
+      }
+      .bub.photo {
+        padding: 8px;
+        width: 560px;
+      }
+      .bub.photo .ph {
+        width: 544px;
+        height: 520px;
+        border-radius: 16px;
+        overflow: hidden;
+        position: relative;
+      }
+      .bub.photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 60%;
+        display: block;
+      }
+      .bub.photo .cap {
+        padding: 12px 14px 4px;
+      }
+      #wa-input {
+        position: absolute;
+        left: 18px;
+        right: 18px;
+        bottom: 26px;
+        height: 96px;
+        display: flex;
+        gap: 14px;
+      }
+      #wa-field {
+        flex: 1;
+        border-radius: 48px;
+        background: #fff;
+        color: var(--wa-meta);
+        font-size: 33px;
+        line-height: 96px;
+        padding-left: 36px;
+      }
+      #wa-mic {
+        width: 96px;
+        height: 96px;
+        border-radius: 50%;
+        background: var(--wa-header);
+        display: grid;
+        place-items: center;
+      }
+
+      /* ---------- scene B: fleet ---------- */
+      #b-head {
+        position: absolute;
+        left: 70px;
+        right: 70px;
+        top: 150px;
+        height: 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 28px;
+        color: var(--ink);
+      }
+      #b-head .left {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        color: var(--green);
+      }
+      #b-head .rule {
+        display: block;
+        width: 64px;
+        height: 4px;
+        background: var(--green);
+      }
+      #b-count {
+        position: relative;
+        width: 220px;
+        height: 40px;
+        overflow: hidden;
+      }
+      #b-count span {
+        position: absolute;
+        right: 0;
+        top: 0;
+        line-height: 40px;
+      }
+      .card {
+        position: absolute;
+        left: 70px;
+        top: 250px;
+        width: 940px;
+        height: 1000px;
+        border-radius: 44px;
+        overflow: hidden;
+        background: var(--sand-deep);
+        box-shadow: 0 40px 80px rgba(13, 51, 40, 0.28);
+      }
+      .card img {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .card .tag {
+        position: absolute;
+        left: 34px;
+        top: 34px;
+        padding: 12px 22px;
+        border-radius: 999px;
+        background: rgba(13, 51, 40, 0.86);
+        color: #fff;
+        font-size: 24px;
+      }
+      .info {
+        position: absolute;
+        left: 70px;
+        right: 70px;
+        top: 1300px;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+      .info .name-wrap {
+        overflow: hidden;
+        height: 140px;
+      }
+      .info .name {
+        display: block;
+        font-size: 138px;
+        line-height: 140px;
+        color: var(--ink);
+      }
+      .info .desc-wrap {
+        overflow: hidden;
+        height: 50px;
+      }
+      .info .desc {
+        display: block;
+        font-family: "Space Mono", monospace;
+        font-size: 38px;
+        line-height: 50px;
+        color: var(--ink-soft);
+      }
+      .info .bar {
+        display: block;
+        width: 940px;
+        height: 6px;
+        background: var(--green);
+        transform-origin: 0 50%;
+      }
+
+      /* collage */
+      #c-grid {
+        position: absolute;
+        left: 70px;
+        top: 250px;
+        width: 940px;
+        height: 1000px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        gap: 16px;
+      }
+      #c-grid .tile {
+        border-radius: 28px;
+        overflow: hidden;
+        position: relative;
+        background: var(--sand-deep);
+      }
+      #c-grid .tile.wide {
+        grid-column: span 2;
+      }
+      #c-grid .tile.wide img {
+        object-position: 50% 62%;
+      }
+      #c-grid img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      #c-line {
+        position: absolute;
+        left: 70px;
+        right: 70px;
+        top: 1300px;
+        font-size: 112px;
+        line-height: 1;
+        color: var(--ink);
+      }
+      #c-line .w {
+        display: inline-block;
+      }
+      #c-line .g {
+        color: var(--green);
+      }
+
+      /* ---------- scene C: end card ---------- */
+      #e-wrap {
+        position: absolute;
+        left: 80px;
+        right: 80px;
+        top: 230px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      #e-badge {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background: var(--ink);
+        color: #fff;
+        display: grid;
+        place-items: center;
+        font-size: 84px;
+        margin-bottom: 44px;
+      }
+      #e-brand {
+        font-size: 150px;
+        line-height: 0.92;
+        color: var(--ink);
+      }
+      #e-brand .w {
+        display: block;
+      }
+      #e-brand .g {
+        color: var(--green);
+      }
+      #e-sub {
+        margin-top: 34px;
+        font-size: 28px;
+        color: var(--ink-soft);
+      }
+      #e-rule {
+        display: block;
+        width: 920px;
+        height: 4px;
+        margin: 54px 0 46px;
+        background: var(--ink);
+        transform-origin: 0 50%;
+      }
+      #e-list {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+      .check {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+        font-size: 46px;
+        font-weight: 700;
+        color: var(--ink);
+      }
+      .check .ck {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: var(--green);
+        display: grid;
+        place-items: center;
+        flex: none;
+      }
+      .check .ck svg {
+        width: 34px;
+        height: 34px;
+        display: block;
+      }
+      #e-cta {
+        position: absolute;
+        left: 80px;
+        right: 80px;
+        top: 1340px;
+        height: 150px;
+        border-radius: 75px;
+        background: var(--ink);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 26px;
+        font-size: 50px;
+        font-weight: 700;
+        box-shadow: 0 26px 60px rgba(13, 51, 40, 0.35);
+      }
+      #e-cta .ic {
+        width: 82px;
+        height: 82px;
+        border-radius: 50%;
+        background: #25d366;
+        display: grid;
+        place-items: center;
+      }
+      #e-cta .ic svg {
+        width: 46px;
+        height: 46px;
+        display: block;
+      }
+      #e-hint {
+        position: absolute;
+        left: 80px;
+        right: 80px;
+        top: 1530px;
+        text-align: center;
+        font-size: 26px;
+        color: var(--ink-soft);
+      }
+
+      /* scene transitions */
+      #flash {
+        position: absolute;
+        inset: 0;
+        background: var(--sand);
+        opacity: 0;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="20"
+      data-width="1080"
+      data-height="1920"
+    >
+      <!-- persistent background -->
+      <div id="bg" class="clip" data-start="0" data-duration="20" data-track-index="0">
+        <div id="bg-glow-a"></div>
+        <div id="bg-glow-b"></div>
+        <div id="bg-ghost" data-layout-ignore aria-hidden="true">PHUKET · SABAI · PHUKET · SABAI</div>
+        <div id="bg-grain"></div>
+      </div>
+
+      <!-- ===== Scene A: WhatsApp conversation ===== -->
+      <section id="scene-a" class="clip" data-start="0" data-duration="7.4" data-track-index="1">
+        <div id="a-inner" class="clip">
+          <div id="a-kicker">
+            <div id="a-label" class="mono"><span class="rule"></span>Sabai Sabike · Phuket</div>
+            <div id="a-title" class="display">Flying to Phuket soon?</div>
+          </div>
+
+          <div id="phone">
+            <div id="screen">
+              <div id="wa-doodle"></div>
+
+              <div id="wa-view">
+                <div id="wa-col">
+                  <div class="msg sent" id="m1">
+                    <div class="bub">
+                      Hey! Landing in Phuket next week 🌴
+                      <span class="meta">10:42<span class="ticks"><svg viewBox="0 0 34 22"><path d="M2 12l6 6L20 4M14 16l2 2L30 4" fill="none" stroke="#53bdeb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
+                    </div>
+                  </div>
+                  <div class="msg sent" id="m2">
+                    <div class="bub">
+                      Can I book a scooter before I arrive? 🛵
+                      <span class="meta">10:42<span class="ticks"><svg viewBox="0 0 34 22"><path d="M2 12l6 6L20 4M14 16l2 2L30 4" fill="none" stroke="#53bdeb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
+                    </div>
+                  </div>
+                  <div class="msg recv" id="m-dots">
+                    <div class="bub dots"><i></i><i></i><i></i></div>
+                  </div>
+                  <div class="msg recv" id="m3">
+                    <div class="bub">
+                      Hi! Of course 🙏 Here's our fleet 👇
+                      <span class="meta">10:43</span>
+                    </div>
+                  </div>
+                  <div class="msg recv" id="m4">
+                    <div class="bub photo">
+                      <div class="ph"><img id="m4-img" src="assets/fleet/adv160-green.jpg" alt="Honda ADV 160" /></div>
+                      <div class="cap">NMAX 155 · ADV 160 · MT-07 <span class="meta">10:43</span></div>
+                    </div>
+                  </div>
+                  <div class="msg recv" id="m5">
+                    <div class="bub">
+                      Send us your dates and we'll reserve one for you ✅
+                      <span class="meta">10:43</span>
+                    </div>
+                  </div>
+                  <div class="msg sent" id="m6">
+                    <div class="bub">
+                      Perfect, let's book! 😎
+                      <span class="meta">10:44<span class="ticks"><svg viewBox="0 0 34 22"><path d="M2 12l6 6L20 4M14 16l2 2L30 4" fill="none" stroke="#8696a0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><svg id="m6-blue" viewBox="0 0 34 22"><path d="M2 12l6 6L20 4M14 16l2 2L30 4" fill="none" stroke="#53bdeb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="wa-header">
+                <svg id="wa-back" viewBox="0 0 24 24"><path d="M15 4l-8 8 8 8" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <div id="wa-avatar">🛵</div>
+                <div id="wa-who">
+                  <div id="wa-name">Sabai Sabike</div>
+                  <div id="wa-status" data-layout-allow-overlap><span id="st-online" data-layout-allow-overlap>online</span><span id="st-typing" data-layout-allow-overlap>typing…</span></div>
+                </div>
+                <div id="wa-icons">
+                  <svg viewBox="0 0 24 24"><rect x="2" y="6" width="13" height="12" rx="2.5" fill="none" stroke="#fff" stroke-width="2"/><path d="M15 10.5l6-3.5v10l-6-3.5z" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"/></svg>
+                  <svg viewBox="0 0 24 24"><path d="M6.6 3.5l2.6.4 1.3 4-1.9 1.6a12 12 0 0 0 5.9 5.9l1.6-1.9 4 1.3.4 2.6c0 1.2-1.1 2.2-2.4 2.1C10.6 19 5 13.4 4.5 5.9c-.1-1.3.9-2.4 2.1-2.4z" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"/></svg>
+                </div>
+              </div>
+
+              <div id="wa-input">
+                <div id="wa-field">Message</div>
+                <div id="wa-mic"><svg width="40" height="40" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3" fill="#fff"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Scene B: the fleet ===== -->
+      <section id="scene-b" class="clip" data-start="7.1" data-duration="8.2" data-track-index="2">
+        <div id="b-inner" class="clip">
+          <div id="b-head" class="mono">
+            <div class="left"><span class="rule"></span>Our fleet</div>
+            <div id="b-count" data-layout-allow-overlap data-layout-allow-overflow><span id="cnt1">01 / 03</span><span id="cnt2">02 / 03</span><span id="cnt3">03 / 03</span></div>
+          </div>
+
+          <div class="card" id="card1">
+            <img src="assets/fleet/nmax155-blue.jpg" alt="Yamaha NMAX 155" />
+            <div class="tag mono">Yamaha</div>
+          </div>
+          <div class="card" id="card2">
+            <img src="assets/fleet/adv160-green.jpg" alt="Honda ADV 160" />
+            <div class="tag mono">Honda</div>
+          </div>
+          <div class="card" id="card3">
+            <img src="assets/fleet/mt07.jpg" alt="Yamaha MT-07" />
+            <div class="tag mono">Yamaha</div>
+          </div>
+
+          <div class="info" id="info1">
+            <div class="name-wrap"><span class="name display">NMAX 155</span></div>
+            <div class="desc-wrap"><span class="desc">Automatic · easy in town</span></div>
+            <span class="bar"></span>
+          </div>
+          <div class="info" id="info2">
+            <div class="name-wrap"><span class="name display">ADV 160</span></div>
+            <div class="desc-wrap"><span class="desc">Adventure scooter · island roads</span></div>
+            <span class="bar"></span>
+          </div>
+          <div class="info" id="info3">
+            <div class="name-wrap"><span class="name display">MT-07</span></div>
+            <div class="desc-wrap"><span class="desc">689cc naked bike · licensed riders</span></div>
+            <span class="bar"></span>
+          </div>
+
+          <div id="c-grid">
+            <div class="tile wide"><img src="assets/fleet/adv160-black.jpg" alt="Honda ADV 160 black" /></div>
+            <div class="tile"><img src="assets/fleet/nmax155-black.jpg" alt="Yamaha NMAX 155 black" /></div>
+            <div class="tile"><img src="assets/fleet/mt07.jpg" alt="Yamaha MT-07" /></div>
+            <div class="tile"><img src="assets/fleet/nmax155-blue.jpg" alt="Yamaha NMAX 155 blue" /></div>
+            <div class="tile"><img src="assets/fleet/adv160-green.jpg" alt="Honda ADV 160 green" /></div>
+          </div>
+          <div id="c-line" class="display"><span class="w">Real bikes.</span> <span class="w g">Real photos.</span></div>
+        </div>
+      </section>
+
+      <!-- ===== Scene C: book on WhatsApp ===== -->
+      <section id="scene-c" class="clip" data-start="15.2" data-duration="4.8" data-track-index="3">
+        <div id="c-inner" class="clip">
+          <div id="e-wrap">
+            <div id="e-badge">🛵</div>
+            <div id="e-brand" class="display"><span class="w">Sabai</span><span class="w g">Sabike</span></div>
+            <div id="e-sub" class="mono">Scooter &amp; motorbike rental · Phuket</div>
+            <span id="e-rule"></span>
+            <div id="e-list">
+              <div class="check"><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Reserve before you land</div>
+              <div class="check"><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Scooters &amp; big bikes</div>
+              <div class="check"><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Real bikes, real photos</div>
+            </div>
+          </div>
+
+          <div id="e-cta">
+            <span class="ic"><svg viewBox="0 0 24 24"><path d="M4 19.5l1.2-3.6A8 8 0 1 1 8.4 19z" fill="none" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/><path d="M9 9.5h6M9 13h4" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/></svg></span>
+            Book on WhatsApp
+          </div>
+          <div id="e-hint" class="mono">Tap below to chat with us</div>
+        </div>
+      </section>
+
+
+      <audio id="sfx" src="assets/sfx.wav" data-start="0" data-duration="20" data-track-index="5" data-volume="0.9"></audio>
+    </div>
+
+    <script>
+      const build = () => {
+        const tl = gsap.timeline({ paused: true });
+
+        /* ---------- background ambience ---------- */
+        tl.fromTo("#bg-ghost", { x: 0 }, { x: -900, duration: 20, ease: "none" }, 0);
+        tl.fromTo("#bg-glow-a", { scale: 0.9 }, { scale: 1.15, duration: 10, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0);
+        tl.fromTo("#bg-glow-b", { scale: 1.1, x: 0 }, { scale: 0.92, x: -120, duration: 10, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0);
+
+        /* ---------- scene A ---------- */
+        // chat column scroll: measured once at build time
+        const view = document.getElementById("wa-view");
+        const viewH = 1094 - 120; // keep clear of the input bar
+        const col = document.getElementById("wa-col");
+        const bottomOf = (id) => {
+          const el = document.getElementById(id);
+          return el.offsetTop + el.offsetHeight + 30;
+        };
+        const scrollFor = (id) => Math.min(0, viewH - bottomOf(id));
+
+        gsap.set(["#m1", "#m2", "#m-dots", "#m3", "#m4", "#m5", "#m6"].map((s) => s + " .bub"), { opacity: 0 });
+        gsap.set("#st-typing", { opacity: 0 });
+        gsap.set("#m6-blue", { opacity: 0 });
+
+        tl.fromTo("#a-label", { x: -60, opacity: 0 }, { x: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, 0.1);
+        tl.fromTo("#a-title", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "expo.out" }, 0.18);
+        tl.fromTo("#phone", { y: 520, rotation: 4 }, { y: 0, rotation: 0, duration: 0.9, ease: "power4.out" }, 0.15);
+
+        const pop = (id, t) => {
+          tl.fromTo(id + " .bub", { scale: 0.6, opacity: 0, y: 20 }, { scale: 1, opacity: 1, y: 0, duration: 0.32, ease: "back.out(1.8)" }, t);
+        };
+        const scrollTo = (id, t) => {
+          tl.to(col, { y: scrollFor(id), duration: 0.35, ease: "power2.out" }, t);
+        };
+
+        pop("#m1", 1.0);
+        pop("#m2", 1.75);
+        // typing
+        tl.to("#st-online", { opacity: 0, duration: 0.15 }, 2.3);
+        tl.to("#st-typing", { opacity: 1, duration: 0.15 }, 2.3);
+        pop("#m-dots", 2.35);
+        tl.fromTo("#m-dots i", { y: 0 }, { y: -10, duration: 0.18, ease: "sine.inOut", yoyo: true, repeat: 3, stagger: 0.09 }, 2.5);
+        // dots collapse; m3 takes its place
+        tl.to("#m-dots .bub", { opacity: 0, scale: 0.6, duration: 0.15 }, 3.2);
+        tl.set("#m-dots", { display: "none" }, 3.35);
+        tl.set(col, { y: 0 }, 3.35);
+        pop("#m3", 3.35);
+        tl.to("#st-typing", { opacity: 0, duration: 0.15 }, 3.35);
+        tl.to("#st-online", { opacity: 1, duration: 0.15 }, 3.35);
+
+        // remaining scroll targets are measured with the dots row removed
+        document.getElementById("m-dots").style.display = "none";
+        const s4 = scrollFor("m4");
+        const s5 = scrollFor("m5");
+        const s6 = scrollFor("m6");
+        document.getElementById("m-dots").style.display = "";
+
+        pop("#m4", 3.95);
+        tl.to(col, { y: s4, duration: 0.4, ease: "power2.out" }, 3.95);
+        tl.fromTo("#m4-img", { scale: 1.25 }, { scale: 1, duration: 1.2, ease: "power2.out" }, 3.95);
+        pop("#m5", 4.85);
+        tl.to(col, { y: s5, duration: 0.35, ease: "power2.out" }, 4.85);
+        pop("#m6", 5.75);
+        tl.to(col, { y: s6, duration: 0.35, ease: "power2.out" }, 5.75);
+        tl.to("#m6-blue", { opacity: 1, duration: 0.2 }, 6.25);
+
+        // exit: phone pushes in and away, kicker leaves
+        tl.to("#a-kicker", { y: -80, opacity: 0, duration: 0.45, ease: "power2.in" }, 6.65);
+        tl.to("#phone", { scale: 1.6, y: -200, opacity: 0, duration: 0.7, ease: "power3.in" }, 6.7);
+
+        /* ---------- scene B (local t = global - 7.1) ---------- */
+        const B = 7.1;
+        const cards = ["#card1", "#card2", "#card3"];
+        const infos = ["#info1", "#info2", "#info3"];
+        const cnts = ["#cnt1", "#cnt2", "#cnt3"];
+        gsap.set(cards.concat(infos, cnts), { opacity: 0 });
+        gsap.set("#c-grid .tile, #c-line .w", { opacity: 0 });
+
+        tl.fromTo("#b-head", { y: -40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, B + 0.1);
+
+        const slot = 2.15;
+        cards.forEach((c, i) => {
+          const t = B + 0.15 + i * slot;
+          const info = infos[i];
+          // card in
+          if (i === 0) {
+            tl.fromTo(c, { opacity: 0, scale: 0.86, y: 120 }, { opacity: 1, scale: 1, y: 0, duration: 0.6, ease: "expo.out" }, t);
+          } else {
+            tl.fromTo(c, { opacity: 1, x: 1100, rotation: 6 }, { x: 0, rotation: 0, duration: 0.55, ease: "power4.out" }, t);
+          }
+          tl.fromTo(c + " img", { scale: 1.18 }, { scale: 1.02, duration: slot + 0.4, ease: "sine.out" }, t);
+          tl.fromTo(c + " .tag", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, t + 0.3);
+          // counter
+          tl.set(cnts[i], { opacity: 1 }, t);
+          tl.fromTo(cnts[i], { y: 40 }, { y: 0, duration: 0.35, ease: "power3.out" }, t);
+          if (i > 0) tl.to(cnts[i - 1], { y: -40, opacity: 0, duration: 0.3, ease: "power2.in" }, t);
+          // info in
+          tl.set(info, { opacity: 1 }, t);
+          tl.fromTo(info + " .name", { y: 150 }, { y: 0, duration: 0.55, ease: "power4.out" }, t + 0.12);
+          tl.fromTo(info + " .desc", { y: 60 }, { y: 0, duration: 0.45, ease: "power3.out" }, t + 0.28);
+          tl.fromTo(info + " .bar", { scaleX: 0 }, { scaleX: 1, duration: slot - 0.4, ease: "none" }, t + 0.2);
+          // out
+          const out = t + slot - 0.05;
+          tl.to(c, { x: -1100, rotation: -6, duration: 0.5, ease: "power3.in" }, out - 0.1);
+          tl.to(info + " .name", { y: -150, duration: 0.35, ease: "power3.in" }, out - 0.15);
+          tl.to(info + " .desc", { y: -60, duration: 0.3, ease: "power3.in" }, out - 0.1);
+          tl.to(info + " .bar", { opacity: 0, duration: 0.2 }, out);
+        });
+
+        // collage
+        const G = B + 0.15 + 3 * slot; // ~13.7
+        tl.to("#b-count", { opacity: 0, duration: 0.2 }, G - 0.1);
+        tl.fromTo(
+          "#c-grid .tile",
+          { opacity: 0, scale: 0.7, y: 60 },
+          { opacity: 1, scale: 1, y: 0, duration: 0.45, ease: "back.out(1.5)", stagger: 0.07 },
+          G,
+        );
+        tl.fromTo("#c-line .w", { opacity: 0, y: 70 }, { opacity: 1, y: 0, duration: 0.5, ease: "expo.out", stagger: 0.25 }, G + 0.2);
+        tl.to("#b-inner", { opacity: 0, scale: 0.94, duration: 0.35, ease: "power2.in" }, 14.95);
+
+        /* ---------- scene C (local t = global - 15.2) ---------- */
+        const C = 15.2;
+        tl.fromTo("#e-badge", { scale: 0, rotation: -90 }, { scale: 1, rotation: 0, duration: 0.6, ease: "back.out(2)" }, C + 0.05);
+        tl.fromTo("#e-brand .w", { y: 140, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "expo.out", stagger: 0.12 }, C + 0.15);
+        tl.fromTo("#e-sub", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.45, ease: "power2.out" }, C + 0.45);
+        tl.fromTo("#e-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power3.inOut" }, C + 0.5);
+        tl.fromTo(".check", { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out", stagger: 0.16 }, C + 0.75);
+        tl.fromTo(".check .ck", { scale: 0 }, { scale: 1, duration: 0.4, ease: "back.out(2.4)", stagger: 0.16 }, C + 0.8);
+        tl.fromTo("#e-cta", { y: 220, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "power4.out" }, C + 1.35);
+        tl.to("#e-cta", { scale: 1.04, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 3 }, C + 2.05);
+        tl.fromTo("#e-cta .ic", { rotation: 0 }, { rotation: 12, duration: 0.12, ease: "sine.inOut", yoyo: true, repeat: 5 }, C + 2.1);
+        tl.fromTo("#e-hint", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, C + 1.8);
+        tl.to("#e-badge", { y: -12, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 2 }, C + 0.8);
+
+        window.__timelines["main"] = tl;
+      };
+      document.fonts.ready.then(build);
+    </script>
+  </body>
+</html>
