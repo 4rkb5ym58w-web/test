@@ -5,7 +5,7 @@ storyboard: yes
 message: "25 cliparts aquarelle de cadeaux de Noël, prêts à embellir toutes vos créations"
 destination: etsy-listing
 aspect: 1080x1080
-language: fr
+language: en
 length: 15s
 audience: acheteurs Etsy créatifs (DIY, papeterie, scrapbooking, petites boutiques)
 ---
@@ -26,3 +26,7 @@ concrets (demande de l'utilisateur : « Intègre des cas d'utilisation des clipa
 - Fin : nom de boutique « PetitPixelsStudio ».
 - Licence commerciale incluse (confirmé par l'utilisateur) → l'afficher.
 - Aucun prix ni promo (l'utilisateur : « si je change ou mets une promo ça devient obsolète »).
+
+## Changes from v1 (sketches)
+
+- « en anglais stp sinon ça me va » → all on-screen copy translated to English; layout unchanged.

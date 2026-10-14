@@ -1,0 +1,531 @@
+{
+  "version": 1,
+  "historyId": "66a965f4-c722-41e2-9c10-b63a9f237552",
+  "currentRevision": "28df12e6-77c0-4483-8e8d-c1eb369a8d31",
+  "pendingChanges": false,
+  "files": {
+    "AGENTS.md": {
+      "hash": "1d4f0c8ca2507b94fd7c9df709fff01416adbd51a0f922b9d6ed2f40129147d5",
+      "content": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/1d/1d4f0c8ca2507b94fd7c9df709fff01416adbd51a0f922b9d6ed2f40129147d5"
+    },
+    "BRIEF.md": {
+      "hash": "a7cb3702236699d3cb1d4ec05d6ee49e8e8222416b3f2eb6632f8b9eb2a74e1a",
+      "content": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/a7/a7cb3702236699d3cb1d4ec05d6ee49e8e8222416b3f2eb6632f8b9eb2a74e1a"
+    },
+    "CLAUDE.md": {
+      "hash": "1d4f0c8ca2507b94fd7c9df709fff01416adbd51a0f922b9d6ed2f40129147d5",
+      "content": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/1d/1d4f0c8ca2507b94fd7c9df709fff01416adbd51a0f922b9d6ed2f40129147d5"
+    },
+    "STORYBOARD.md": {
+      "hash": "fb1bb9015ba31de318c1876a2edfdefbc40d0c8b62e32210b7c7b1006fc6ab07",
+      "content": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/fb/fb1bb9015ba31de318c1876a2edfdefbc40d0c8b62e32210b7c7b1006fc6ab07"
+    },
+    "assets/cliparts/big-pile-of-wrapped-prese.webp": {
+      "hash": "b646744dc55bc5b9b217642a1e8e633da924591f6d0f91d11e58f4fd81cc7d15",
+      "content": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/b6/b646744dc55bc5b9b217642a1e8e633da924591f6d0f91d11e58f4fd81cc7d15"
+    },
+    "assets/cliparts/big-red-satin-bow-with-lo.webp": {
+      "hash": "75539e5b120f085ba15d6508595697120a36f45a5556fe1741db2eaf9192e2ab",
+      "content": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/75/75539e5b120f085ba15d6508595697120a36f45a5556fe1741db2eaf9192e2ab"
+    },
+    "assets/cliparts/cozy-arrangement-of-wrapp.webp": {
+      "hash": "f9b962a5a7f0b5cb8e61b6c7e7be6d8e6f62193251b2b680df30f913a038d2bc",
+      "content": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/f9/f9b962a5a7f0b5cb8e61b6c7e7be6d8e6f62193251b2b680df30f913a038d2bc"
+    },
+    "assets/cliparts/cream-present-with-a-gold.webp": {
+      "hash": "3cdfac1d795665e03ddb620aee24401e13133040500240c41a87622f08b7df8d",
+      "content": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/3c/3cdfac1d795665e03ddb620aee24401e13133040500240c41a87622f08b7df8d"
+    },
+    "assets/cliparts/cylinder-shaped-present-w.webp": {
+      "hash": "05eb147fc6f0bddcb2f90f5d714c88c79b6f952073fc15ce464e9aacabd4a5b1",
+      "content": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/05/05eb147fc6f0bddcb2f90f5d714c88c79b6f952073fc15ce464e9aacabd4a5b1"
+    },
+    "assets/cliparts/little-red-wooden-sleigh-.webp": {
+      "hash": "2fb3fd39c65a77fb03b63b0ac8758dd1c34a772a85f985352ad5d4f969c16604",
+      "content": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/2f/2fb3fd39c65a77fb03b63b0ac8758dd1c34a772a85f985352ad5d4f969c16604"
+    },
+    "assets/cliparts/long-flat-present-wrapped.webp": {
+      "hash": "4bd366e2ebe01d335a86288e930508c9eb998c022a8902d068547a0f290d4048",
+      "content": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/4b/4bd366e2ebe01d335a86288e930508c9eb998c022a8902d068547a0f290d4048"
+    },
+    "assets/cliparts/open-gift-box-with-a-ted.webp": {
+      "hash": "4cda126077ac438ce8beca03e10278c40e4bb0b989bc942210ed5674d47506ff",
+      "content": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/4c/4cda126077ac438ce8beca03e10278c40e4bb0b989bc942210ed5674d47506ff"
+    },
+    "assets/cliparts/open-gift-box-with-golde.webp": {
+      "hash": "fa952fd9e89b53549ad11618ec3e94f2996ce7d63a0af78f5f2c18cb01b2c51f",
+      "content": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/fa/fa952fd9e89b53549ad11618ec3e94f2996ce7d63a0af78f5f2c18cb01b2c51f"
+    },
+    "assets/cliparts/present-with-a-blank-kraf.webp": {
+      "hash": "68bb8aba428186dbb861ee56a64978de6d6f8955af019769c4d0338ee54d57a5",
+      "content": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/68/68bb8aba428186dbb861ee56a64978de6d6f8955af019769c4d0338ee54d57a5"
+    },
+    "assets/cliparts/present-with-a-pine-cone-.webp": {
+      "hash": "02b014327ac73615691e9fb5c6301d0f2556f9f71dd5f5ccf0731a1a5a2b7e0d",
+      "content": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/02/02b014327ac73615691e9fb5c6301d0f2556f9f71dd5f5ccf0731a1a5a2b7e0d"
+    },
+    "assets/cliparts/present-wrapped-in-brown-.webp": {
+      "hash": "843423698eeaf0e35ed49bf5da09946f3c1ae7705acb86450e45dec8468c98f1",
+      "content": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/84/843423698eeaf0e35ed49bf5da09946f3c1ae7705acb86450e45dec8468c98f1"
+    },
+    "assets/cliparts/present-wrapped-in-green-.webp": {
+      "hash": "00beb81c623ee990344b07b9a6ae905c9f2e4f6606da3d4e7de118c3887aed1c",
+      "content": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/00/00beb81c623ee990344b07b9a6ae905c9f2e4f6606da3d4e7de118c3887aed1c"
+    },
+    "assets/cliparts/present-wrapped-in-red-an.webp": {
+      "hash": "90d35010a3129711e24b1ad9d3342d0ec16eb15b71d924168268b0fe2cfdf098",
+      "content": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/90/90d35010a3129711e24b1ad9d3342d0ec16eb15b71d924168268b0fe2cfdf098"
+    },
+    "assets/cliparts/present-wrapped-in-red-ta.webp": {
+      "hash": "ef093912dbb407f98e2164e75a939e81b2f6de621c202cccb8dcc24c8dae6882",
+      "content": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/ef/ef093912dbb407f98e2164e75a939e81b2f6de621c202cccb8dcc24c8dae6882"
+    },
+    "assets/cliparts/red-christmas-stocking-fi.webp": {
+      "hash": "c20d6aa7192c8952ab0a28d734bbd5280d265bab122b8d5c88ac58738232e08b",
+      "content": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/c2/c20d6aa7192c8952ab0a28d734bbd5280d265bab122b8d5c88ac58738232e08b"
+    },
+    "assets/cliparts/red-gift-bag-with-rope-ha.webp": {
+      "hash": "c416ba5e48bc99c29e854d97d6e2cca326d2e1bb158569c30e997b52f4d981c9",
+      "content": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/c4/c416ba5e48bc99c29e854d97d6e2cca326d2e1bb158569c30e997b52f4d981c9"
+    },
+    "assets/cliparts/round-hat-box-gift-with-a.webp": {
+      "hash": "01568e9c842560dc987c8064bd659cf2e3af4d262c7e34e237a7f90af31543a0",
+      "content": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/01/01568e9c842560dc987c8064bd659cf2e3af4d262c7e34e237a7f90af31543a0"
+    },
+    "assets/cliparts/santas-red-velvet-sack-over.webp": {
+      "hash": "c4c9ab884812c06561416fa3c8baef6fe748d30ef06d4089bcdcea1f8b933ab5",
+      "content": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/c4/c4c9ab884812c06561416fa3c8baef6fe748d30ef06d4089bcdcea1f8b933ab5"
+    },
+    "assets/cliparts/small-decorated-christmas.webp": {
+      "hash": "f67161bd93f338ada641ecac1d5010955c98700e7419bca45b7880f25064b9e8",
+      "content": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/f6/f67161bd93f338ada641ecac1d5010955c98700e7419bca45b7880f25064b9e8"
+    },
+    "assets/cliparts/square-present-wrapped-in.webp": {
+      "hash": "da74b5d3b73a871fe5c808654f779f3fb526df91a44c16e2c547a91effc6f74a",
+      "content": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/da/da74b5d3b73a871fe5c808654f779f3fb526df91a44c16e2c547a91effc6f74a"
+    },
+    "assets/cliparts/stack-of-three-presents-o.webp": {
+      "hash": "a9bc7e8ccae8fa92ee8047280f79c782ddf9cd03150fd605fd642bab646ce6bb",
+      "content": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/a9/a9bc7e8ccae8fa92ee8047280f79c782ddf9cd03150fd605fd642bab646ce6bb"
+    },
+    "assets/cliparts/tall-rectangular-present-.webp": {
+      "hash": "f53865fbf7e41b009a8d2321a11ed041d5b84de5a1b5bef94389a9b3bf5baeca",
+      "content": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/f5/f53865fbf7e41b009a8d2321a11ed041d5b84de5a1b5bef94389a9b3bf5baeca"
+    },
+    "assets/cliparts/tiny-present-with-an-over.webp": {
+      "hash": "24d396a1a1a415aecccbc275b2fa83a44ced65f1ad68beb16e675a2b3b73587a",
+      "content": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/24/24d396a1a1a415aecccbc275b2fa83a44ced65f1ad68beb16e675a2b3b73587a"
+    },
+    "assets/cliparts/wicker-basket-full-of-wra.webp": {
+      "hash": "54e85dcfcc4d22b5af177c05750e7509e5f561da35a5dbdbfd7376a1927fefb8",
+      "content": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/54/54e85dcfcc4d22b5af177c05750e7509e5f561da35a5dbdbfd7376a1927fefb8"
+    },
+    "assets/fonts/fraunces-latin-400-italic.woff2": {
+      "hash": "475b154af19c6b4ef371db22078b5044a078ce2467e11ef22a7b87f77837caf3",
+      "content": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/47/475b154af19c6b4ef371db22078b5044a078ce2467e11ef22a7b87f77837caf3"
+    },
+    "assets/fonts/fraunces-latin-400-normal.woff2": {
+      "hash": "e558f39453a9c611908be04294b50dea5f21ae6c49b41c6e47f4115e91f90209",
+      "content": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/e5/e558f39453a9c611908be04294b50dea5f21ae6c49b41c6e47f4115e91f90209"
+    },
+    "assets/fonts/fraunces-latin-600-italic.woff2": {
+      "hash": "23712db611d0799df860504f0e6626ade20588fab2b8f4882d0e711a330da1b7",
+      "content": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/23/23712db611d0799df860504f0e6626ade20588fab2b8f4882d0e711a330da1b7"
+    },
+    "assets/fonts/fraunces-latin-700-normal.woff2": {
+      "hash": "c38570d224b830056e69484bb9e768e1d3fa7ba4755c8891a3c6d366194d2ff3",
+      "content": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/c3/c38570d224b830056e69484bb9e768e1d3fa7ba4755c8891a3c6d366194d2ff3"
+    },
+    "assets/fonts/montserrat-latin-500-normal.woff2": {
+      "hash": "2b53300fb9471520df2f4905847fb7a209879b2029ae893c05c6ee346b1320cd",
+      "content": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/2b/2b53300fb9471520df2f4905847fb7a209879b2029ae893c05c6ee346b1320cd"
+    },
+    "assets/fonts/montserrat-latin-700-normal.woff2": {
+      "hash": "f9d9e65b15372cebcafc3acd1e664a564c5c4b23278de4d5760de9a13c530371",
+      "content": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/f9/f9d9e65b15372cebcafc3acd1e664a564c5c4b23278de4d5760de9a13c530371"
+    },
+    "hyperframes.json": {
+      "hash": "ad5dadeef78a520800a9e5cdd27a92ff5ac37f11b6a07f611b6b52b9f8c79a17",
+      "content": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/ad/ad5dadeef78a520800a9e5cdd27a92ff5ac37f11b6a07f611b6b52b9f8c79a17"
+    },
+    "index.html": {
+      "hash": "3df6c6eb0da80cf66ff1a95e87dea7f51ab456df74301b087d2e51598c49eaa5",
+      "content": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/3d/3df6c6eb0da80cf66ff1a95e87dea7f51ab456df74301b087d2e51598c49eaa5"
+    },
+    "meta.json": {
+      "hash": "49e6b9e5513bc5acb841664a842c40a56871f112ef30990334bbd842d638d7d5",
+      "content": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/49/49e6b9e5513bc5acb841664a842c40a56871f112ef30990334bbd842d638d7d5"
+    },
+    "package.json": {
+      "hash": "12ce42861808bc1e72acb7848e26e97d224465709abe1031c8159e3d0acfdea8",
+      "content": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/12/12ce42861808bc1e72acb7848e26e97d224465709abe1031c8159e3d0acfdea8"
+    },
+    "storyboard-apercu.png": {
+      "hash": "553a55a2c837c7131d9047c97b1e9e33259dd52449a103603d8b5f135d3bfa3d",
+      "content": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/55/553a55a2c837c7131d9047c97b1e9e33259dd52449a103603d8b5f135d3bfa3d"
+    },
+    "storyboard.src.html": {
+      "hash": "6a596fd2350db55f0283e4262a25f39bc3779075fa5af19819f2b22903cf03db",
+      "content": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/6a/6a596fd2350db55f0283e4262a25f39bc3779075fa5af19819f2b22903cf03db"
+    },
+    "storyboard.html": {
+      "hash": "a7e99c0338c50c5a9cc8a7ea6024f41851c1f11e0865de5eb06ec15daa7d980d",
+      "content": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/a7/a7e99c0338c50c5a9cc8a7ea6024f41851c1f11e0865de5eb06ec15daa7d980d"
+    },
+    "assets/vendor/gsap.min.js": {
+      "hash": "c174bfce53a729418d57a8ad8625e7247c793a22fef8e2851e3cfa3de9cd8280",
+      "content": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/c1/c174bfce53a729418d57a8ad8625e7247c793a22fef8e2851e3cfa3de9cd8280"
+    }
+  },
+  "revisions": {
+    "d5decd80-5e9a-4b3c-b11f-4c70c4a4d123": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1791972828032,
+      "endedAt": 1791972828065,
+      "files": {
+        "assets/vendor/gsap.min.js": {
+          "before": null,
+          "after": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/c1/c174bfce53a729418d57a8ad8625e7247c793a22fef8e2851e3cfa3de9cd8280"
+        },
+        "index.html": {
+          "before": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/df/df48a21c028a18675644d1079a9ec14c05e78789c36268ba0be6a01792be2247",
+          "after": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/6d/6d6f3591f864b9430d45abaa6adcdd45432ece066500527f7d7260cd10124e30"
+        }
+      }
+    },
+    "28df12e6-77c0-4483-8e8d-c1eb369a8d31": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1791972891630,
+      "endedAt": 1791972891631,
+      "files": {
+        "index.html": {
+          "before": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/6d/6d6f3591f864b9430d45abaa6adcdd45432ece066500527f7d7260cd10124e30",
+          "after": "/root/.cache/hyperframes/history/66a965f4-c722-41e2-9c10-b63a9f237552/blobs/3d/3df6c6eb0da80cf66ff1a95e87dea7f51ab456df74301b087d2e51598c49eaa5"
+        }
+      }
+    }
+  },
+  "checks": {
+    "latest": {
+      "revision": "28df12e6-77c0-4483-8e8d-c1eb369a8d31",
+      "id": "cd5dd82a-fee2-431f-af98-9069aa089167"
+    },
+    "revisions": {
+      "d5decd80-5e9a-4b3c-b11f-4c70c4a4d123": [
+        {
+          "id": "5b5a6e6b-7aa1-4aab-910f-f2d93d449dfa",
+          "scope": "project",
+          "metadata": {
+            "ok": true,
+            "browserSkipped": false,
+            "options": {
+              "samples": 9,
+              "atTransitions": false,
+              "maxIssues": 80,
+              "collapseStatic": true,
+              "tolerance": 2,
+              "timeout": 3000,
+              "contrast": true,
+              "strict": false,
+              "snapshots": false,
+              "browserGpuMode": "auto"
+            }
+          },
+          "createdAt": 1791972844009,
+          "contentHash": "c37f1476012e0c61ebcd951a698aa1377b7a7f51251e5569e13e6f4a6bb5b3f9",
+          "revision": "d5decd80-5e9a-4b3c-b11f-4c70c4a4d123",
+          "inputFingerprint": "3dfddc665e5f9dcfa56bd2f3413e23145091061ae4b09f86e94b9cbda830b531",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "6cbe630b-76e6-4daf-a5de-8d830832e6f4"
+        },
+        {
+          "id": "1c2443ac-972a-4983-917e-299a4095c25b",
+          "scope": "project",
+          "metadata": {
+            "ok": true,
+            "browserSkipped": false,
+            "options": {
+              "samples": 9,
+              "atTransitions": false,
+              "maxIssues": 80,
+              "collapseStatic": true,
+              "tolerance": 2,
+              "timeout": 3000,
+              "contrast": true,
+              "strict": false,
+              "snapshots": false,
+              "browserGpuMode": "auto"
+            }
+          },
+          "createdAt": 1791972863732,
+          "contentHash": "c37f1476012e0c61ebcd951a698aa1377b7a7f51251e5569e13e6f4a6bb5b3f9",
+          "revision": "d5decd80-5e9a-4b3c-b11f-4c70c4a4d123",
+          "inputFingerprint": "3dfddc665e5f9dcfa56bd2f3413e23145091061ae4b09f86e94b9cbda830b531",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "6cbe630b-76e6-4daf-a5de-8d830832e6f4"
+        }
+      ],
+      "28df12e6-77c0-4483-8e8d-c1eb369a8d31": [
+        {
+          "id": "cd5dd82a-fee2-431f-af98-9069aa089167",
+          "scope": "project",
+          "report": "/home/user/test/videos/etsy-cliparts-cadeaux-noel/.hyperframes/artifacts/checks/cd5dd82a-fee2-431f-af98-9069aa089167.json",
+          "metadata": {
+            "ok": true,
+            "browserSkipped": false,
+            "options": {
+              "samples": 9,
+              "atTransitions": false,
+              "maxIssues": 80,
+              "collapseStatic": true,
+              "tolerance": 2,
+              "timeout": 3000,
+              "contrast": true,
+              "strict": false,
+              "snapshots": false,
+              "browserGpuMode": "auto"
+            }
+          },
+          "createdAt": 1791972907316,
+          "contentHash": "609925076e86b2a4956c38e703adfd9ffcb09c136eb536d51741733481c68b9b",
+          "revision": "28df12e6-77c0-4483-8e8d-c1eb369a8d31",
+          "inputFingerprint": "aa9fe0c32491fb046430ab19255360b089af65ac60519a3da5abeb01b0949b2a",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        }
+      ]
+    },
+    "unversioned": [
+      {
+        "id": "801caee0-82d3-43e9-a35e-7d2e1e59106b",
+        "scope": "project",
+        "report": "/home/user/test/videos/etsy-cliparts-cadeaux-noel/.hyperframes/artifacts/checks/801caee0-82d3-43e9-a35e-7d2e1e59106b.json",
+        "metadata": {
+          "ok": false,
+          "browserSkipped": false,
+          "options": {
+            "samples": 9,
+            "atTransitions": false,
+            "maxIssues": 80,
+            "collapseStatic": true,
+            "tolerance": 2,
+            "timeout": 3000,
+            "contrast": true,
+            "strict": false,
+            "snapshots": false,
+            "browserGpuMode": "auto"
+          }
+        },
+        "createdAt": 1791972796992,
+        "contentHash": "407f5ca6c18c6eb43e051b9c83261ca3afbbabd2505a55facaaa963495f85f91",
+        "revision": null,
+        "inputFingerprint": "376baec467918d0a618268023bdb243671dd4d89d4fd1f2b2b50c6c054fe668e",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      },
+      {
+        "id": "3b8689aa-1b12-4434-bb90-ec2b9cc1ce1b",
+        "scope": "project",
+        "report": "/home/user/test/videos/etsy-cliparts-cadeaux-noel/.hyperframes/artifacts/checks/3b8689aa-1b12-4434-bb90-ec2b9cc1ce1b.json",
+        "metadata": {
+          "ok": false,
+          "browserSkipped": false,
+          "options": {
+            "samples": 9,
+            "atTransitions": false,
+            "maxIssues": 80,
+            "collapseStatic": true,
+            "tolerance": 2,
+            "timeout": 3000,
+            "contrast": true,
+            "strict": false,
+            "snapshots": false,
+            "browserGpuMode": "auto"
+          }
+        },
+        "createdAt": 1791972817018,
+        "contentHash": "407f5ca6c18c6eb43e051b9c83261ca3afbbabd2505a55facaaa963495f85f91",
+        "revision": null,
+        "inputFingerprint": "376baec467918d0a618268023bdb243671dd4d89d4fd1f2b2b50c6c054fe668e",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      }
+    ]
+  },
+  "snapshots": {
+    "latest": {
+      "revision": "d5decd80-5e9a-4b3c-b11f-4c70c4a4d123",
+      "id": "9c0d68ed-372b-4340-beb6-788460063c46-6"
+    },
+    "revisions": {
+      "d5decd80-5e9a-4b3c-b11f-4c70c4a4d123": [
+        {
+          "scope": "full",
+          "id": "9c0d68ed-372b-4340-beb6-788460063c46-0",
+          "image": "/tmp/claude-0/-home-user-test/75cf6813-420b-580f-94f5-dd6f76b3e42a/scratchpad/snaps/frame-00-at-1.8s.png",
+          "time": 1.8,
+          "metadata": {
+            "width": 1080,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1791972879585,
+          "contentHash": "ae90f97e590bf03a750a9d07128e62687bb720e0448b51991988559db0066c99",
+          "revision": "d5decd80-5e9a-4b3c-b11f-4c70c4a4d123",
+          "inputFingerprint": "3dfddc665e5f9dcfa56bd2f3413e23145091061ae4b09f86e94b9cbda830b531",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "9c0d68ed-372b-4340-beb6-788460063c46-1",
+          "image": "/tmp/claude-0/-home-user-test/75cf6813-420b-580f-94f5-dd6f76b3e42a/scratchpad/snaps/frame-01-at-2.5s.png",
+          "time": 2.5,
+          "metadata": {
+            "width": 1080,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1791972879585,
+          "contentHash": "44d3568a0f1b8c0a678043ef1172b5ef1328f7bc1c6c80cd9af8099a6008522b",
+          "revision": "d5decd80-5e9a-4b3c-b11f-4c70c4a4d123",
+          "inputFingerprint": "3dfddc665e5f9dcfa56bd2f3413e23145091061ae4b09f86e94b9cbda830b531",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "9c0d68ed-372b-4340-beb6-788460063c46-2",
+          "image": "/tmp/claude-0/-home-user-test/75cf6813-420b-580f-94f5-dd6f76b3e42a/scratchpad/snaps/frame-02-at-4.9s.png",
+          "time": 4.9,
+          "metadata": {
+            "width": 1080,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1791972879585,
+          "contentHash": "51b8aa87c7df3778bc3a2925b793ee17cdd132a009fa4ed1c208a744515399ab",
+          "revision": "d5decd80-5e9a-4b3c-b11f-4c70c4a4d123",
+          "inputFingerprint": "3dfddc665e5f9dcfa56bd2f3413e23145091061ae4b09f86e94b9cbda830b531",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "9c0d68ed-372b-4340-beb6-788460063c46-3",
+          "image": "/tmp/claude-0/-home-user-test/75cf6813-420b-580f-94f5-dd6f76b3e42a/scratchpad/snaps/frame-03-at-7.4s.png",
+          "time": 7.4,
+          "metadata": {
+            "width": 1080,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1791972879585,
+          "contentHash": "25d620b0d3fa3d27bdbe906e637f5ecd9fdcba94e8ae5c08c09279c1c218a601",
+          "revision": "d5decd80-5e9a-4b3c-b11f-4c70c4a4d123",
+          "inputFingerprint": "3dfddc665e5f9dcfa56bd2f3413e23145091061ae4b09f86e94b9cbda830b531",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "9c0d68ed-372b-4340-beb6-788460063c46-4",
+          "image": "/tmp/claude-0/-home-user-test/75cf6813-420b-580f-94f5-dd6f76b3e42a/scratchpad/snaps/frame-04-at-9.9s.png",
+          "time": 9.9,
+          "metadata": {
+            "width": 1080,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1791972879585,
+          "contentHash": "7a6a0905e92d8385052273ab54878ea244ca6ba2b8dd738b781a5099d54851b1",
+          "revision": "d5decd80-5e9a-4b3c-b11f-4c70c4a4d123",
+          "inputFingerprint": "3dfddc665e5f9dcfa56bd2f3413e23145091061ae4b09f86e94b9cbda830b531",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "9c0d68ed-372b-4340-beb6-788460063c46-5",
+          "image": "/tmp/claude-0/-home-user-test/75cf6813-420b-580f-94f5-dd6f76b3e42a/scratchpad/snaps/frame-05-at-12.3s.png",
+          "time": 12.3,
+          "metadata": {
+            "width": 1080,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1791972879585,
+          "contentHash": "a42b3f7a42816a8e82b665c53b56106a9e444c7b70d93a9916eb840528d113af",
+          "revision": "d5decd80-5e9a-4b3c-b11f-4c70c4a4d123",
+          "inputFingerprint": "3dfddc665e5f9dcfa56bd2f3413e23145091061ae4b09f86e94b9cbda830b531",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "9c0d68ed-372b-4340-beb6-788460063c46-6",
+          "image": "/tmp/claude-0/-home-user-test/75cf6813-420b-580f-94f5-dd6f76b3e42a/scratchpad/snaps/frame-06-at-14.9s.png",
+          "time": 14.9,
+          "metadata": {
+            "width": 1080,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1791972879585,
+          "contentHash": "3d15facb2349b092e1dd93e209f51bcb29861b67425a08875ba82e660f78db15",
+          "revision": "d5decd80-5e9a-4b3c-b11f-4c70c4a4d123",
+          "inputFingerprint": "3dfddc665e5f9dcfa56bd2f3413e23145091061ae4b09f86e94b9cbda830b531",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        }
+      ]
+    },
+    "unversioned": []
+  },
+  "renders": {
+    "latest": {
+      "id": "6cbe630b-76e6-4daf-a5de-8d830832e6f4",
+      "completedAt": 1791972952976,
+      "output": "/home/user/test/videos/etsy-cliparts-cadeaux-noel/renders/petitpixelsstudio-christmas-gifts-clipart.mp4",
+      "status": "completed",
+      "revision": "28df12e6-77c0-4483-8e8d-c1eb369a8d31"
+    },
+    "retainedRevisions": [
+      "28df12e6-77c0-4483-8e8d-c1eb369a8d31"
+    ]
+  },
+  "pendingArtifactCleanup": []
+}

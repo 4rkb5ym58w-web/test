@@ -2,54 +2,264 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=1920, height=1080" />
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <meta name="viewport" content="width=1080, height=1080" />
+    <script src="assets/vendor/gsap.min.js"></script>
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      html,
-      body {
-        margin: 0;
-        width: 1920px;
-        height: 1080px;
-        overflow: hidden;
-        background: #0a0a0a;
-      }
-      #root {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: Inter, ui-sans-serif, system-ui, sans-serif;
-      }
-      #title {
-        color: #f4f4f5;
-        font-size: 72px;
-        font-weight: 600;
-        letter-spacing: -0.03em;
-      }
+      @font-face { font-family: "Fraunces"; font-weight: 400; font-style: normal; src: url("assets/fonts/fraunces-latin-400-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Fraunces"; font-weight: 700; font-style: normal; src: url("assets/fonts/fraunces-latin-700-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Fraunces"; font-weight: 400; font-style: italic; src: url("assets/fonts/fraunces-latin-400-italic.woff2") format("woff2"); }
+      @font-face { font-family: "Fraunces"; font-weight: 600; font-style: italic; src: url("assets/fonts/fraunces-latin-600-italic.woff2") format("woff2"); }
+      @font-face { font-family: "Montserrat"; font-weight: 500; src: url("assets/fonts/montserrat-latin-500-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Montserrat"; font-weight: 700; src: url("assets/fonts/montserrat-latin-700-normal.woff2") format("woff2"); }
+      :root { --paper:#F6EFE3; --red:#A8232B; --pine:#2E5A3B; --gold:#8C6A22; --gold-lt:#F0D79A; --ink:#3B2A20; --kraft:#C8A273; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1080px; height: 1080px; overflow: hidden; background: var(--paper); }
+      #root { width: 100%; height: 100%; position: relative; overflow: hidden; color: var(--ink); font-family: Montserrat, sans-serif;
+        background: var(--paper);
+        background-image: radial-gradient(circle at 20% 15%, #fffaf1 0, transparent 45%), radial-gradient(circle at 85% 90%, #efe2cc 0, transparent 50%); }
+      .scene { position: absolute; inset: 0; }
+      .inner { position: absolute; inset: 0; will-change: transform; }
+      .abs { position: absolute; }
+      img.c { position: absolute; object-fit: contain; filter: drop-shadow(0 13px 13px rgba(80,50,30,.18)); }
+      .pillrow { position: absolute; left: 0; right: 0; top: 64.8px; display: flex; justify-content: center; }
+      .pill { background: var(--pine); color: #fff; font: 700 36.7px Montserrat; letter-spacing: .08em; text-transform: uppercase; padding: 17.3px 38.9px; border-radius: 99px; white-space: nowrap; }
+      .pill i { font-style: normal; color: var(--gold-lt); margin-right: 17.3px; }
+
+      /* 1 hook */
+      #s1-title { position: absolute; left: 0; right: 0; top: 594px; text-align: center; font: 700 118.8px/1 Fraunces; letter-spacing: -.03em; color: var(--red); }
+      #s1-title span { display: inline-block; }
+      #s1-sub { position: absolute; left: 0; right: 0; top: 745.2px; text-align: center; font: italic 400 79.9px/1.1 Fraunces; color: var(--pine); }
+      #s1-rule { position: absolute; left: 410.4px; width: 259.2px; top: 885.6px; height: 4.3px; background: var(--gold); }
+      #s1-shop { position: absolute; left: 0; right: 0; top: 918px; text-align: center; font: 700 28.1px Montserrat; letter-spacing: .3em; color: var(--gold); }
+      #wipe { position: absolute; top: 0; left: 0; width: 1300px; height: 1080px; background: var(--pine); }
+
+      /* 2 pack */
+      #s2-num { position: absolute; left: 194.4px; top: 48.6px; font: 700 162px/1 Fraunces; color: var(--red); letter-spacing: -.04em; font-variant-numeric: tabular-nums; }
+      #s2-t { position: absolute; left: 421.2px; top: 75.6px; font: italic 400 64.8px/1.05 Fraunces; color: var(--pine); }
+      #s2-grid { position: absolute; left: 194.4px; right: 194.4px; top: 226.8px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 13px; }
+      #s2-grid .cellw { aspect-ratio: 1; }
+      #s2-grid .tile { width: 100%; height: 100%; background: rgba(255,255,255,.6); border-radius: 13px; display: grid; place-items: center; }
+      #s2-grid img { width: 88%; height: 88%; object-fit: contain; }
+      #s2-band { position: absolute; left: 0; right: 0; bottom: 0; height: 97.2px; background: var(--pine); color: #fff; display: flex; align-items: center; justify-content: center; gap: 18px; font: 700 23.5px Montserrat; letter-spacing: .03em; text-transform: uppercase; white-space: nowrap; }
+      #s2-band i { color: var(--gold-lt); font-style: normal; }
+
+      /* 3 cards */
+      #s3-card { position: absolute; left: 216px; top: 216px; width: 648px; height: 777.6px; background: #fffdf8; border-radius: 10.8px; box-shadow: 0 32.4px 64.8px rgba(70,40,20,.22); rotate: -3deg; }
+      #s3-card .frameline { position: absolute; inset: 28.1px; border: 3.2px solid var(--gold); }
+      #s3-mc { position: absolute; left: 0; right: 0; top: 475.2px; text-align: center; white-space: nowrap; font: italic 600 70px/1 Fraunces; color: var(--red); }
+      #s3-hny { position: absolute; left: 0; right: 0; top: 594px; text-align: center; font: 500 25.9px Montserrat; letter-spacing: .25em; text-transform: uppercase; color: var(--pine); }
+      #s3-love { position: absolute; left: 0; right: 0; top: 658.8px; text-align: center; font: italic 400 32.4px Fraunces; color: var(--ink); }
+
+      /* 4 tags */
+      .tagw { position: absolute; width: 280.8px; height: 734.4px; transform-origin: 50% 0; }
+      .string { position: absolute; left: 138.6px; top: 0; width: 3.8px; height: 324px; background: #8b6a43; }
+      .tagk { position: absolute; left: 0; bottom: 0; width: 280.8px; height: 432px; background: var(--kraft); clip-path: polygon(20% 0, 80% 0, 100% 14%, 100% 100%, 0 100%, 0 14%); }
+      .tagk .hole { position: absolute; left: 123.1px; top: 36.7px; width: 34.6px; height: 34.6px; border-radius: 50%; background: var(--paper); }
+      .tagk .tx { position: absolute; left: 0; right: 0; bottom: 48.6px; text-align: center; font: italic 600 38.9px/1.1 Fraunces; color: var(--ink); }
+      .stk { position: absolute; width: 205.2px; height: 205.2px; border-radius: 50%; background: #fff; box-shadow: 0 10.8px 21.6px rgba(0,0,0,.18); display: grid; place-items: center; }
+      .stk img { width: 80%; height: 80%; object-fit: contain; }
+
+      /* 5 more */
+      .mk { position: absolute; background: #fffdf8; box-shadow: 0 25.9px 43.2px rgba(70,40,20,.2); border-radius: 10.8px; overflow: hidden; }
+      .mk .h { font: italic 600 36.7px/1.05 Fraunces; color: var(--red); text-align: center; }
+      .mk .s { font: 700 18.4px Montserrat; letter-spacing: .12em; text-transform: uppercase; color: var(--pine); text-align: center; }
+      .lines { position: absolute; left: 32.4px; right: 32.4px; height: 2.7px; background: #e2d6c3; }
+      .igbar { height: 54px; display: flex; align-items: center; gap: 15.1px; padding: 0 21.6px; font: 700 18.4px Montserrat; color: var(--ink); }
+      .igbar .av { width: 30.2px; height: 30.2px; border-radius: 50%; background: linear-gradient(45deg, #e9b44c, #c1355a); }
+      #s5-cap { position: absolute; left: 0; right: 0; bottom: 162px; text-align: center; font: 700 31.3px Montserrat; letter-spacing: .08em; text-transform: uppercase; color: var(--ink); }
+      #s5-cap i { color: var(--gold); font-style: normal; margin: 0 15.1px; }
+
+      /* 6 cta */
+      #s6-shop { position: absolute; left: 0; right: 0; top: 615.6px; text-align: center; font: 700 97.2px/1 Fraunces; color: var(--red); letter-spacing: -.03em; }
+      #s6-shop em { font-weight: 400; font-style: italic; color: var(--pine); }
+      #s6-perks { position: absolute; left: 0; right: 0; top: 745.2px; text-align: center; font: 700 28.1px/1.7 Montserrat; letter-spacing: .06em; text-transform: uppercase; color: var(--ink); }
+      #s6-perks i { font-style: normal; color: var(--gold); }
+      #s6-btnrow { position: absolute; left: 0; right: 0; top: 874.8px; display: flex; justify-content: center; }
+      #s6-btn { background: var(--red); color: #fff; font: 700 38.9px Montserrat; padding: 25.9px 64.8px; border-radius: 99px; white-space: nowrap; box-shadow: 0 15.1px 0 #7c1a20; }
+      .spark { position: absolute; width: 54px; height: 54px; color: var(--gold); font-size: 47.5px; line-height: 54px; text-align: center; }
     </style>
   </head>
   <body>
-    <div
-      id="root"
-      data-composition-id="main"
-      data-start="0"
-      data-duration="10"
-      data-width="1920"
-      data-height="1080"
-    >
-      <h1 id="title" class="clip" data-start="0" data-duration="10" data-track-index="0">Title</h1>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="15" data-width="1080" data-height="1080">
+
+      <!-- 1 · HOOK -->
+      <div id="s1" class="scene clip" data-start="0" data-duration="2.5" data-track-index="1">
+        <div class="inner" id="s1-in">
+          <img class="c" id="s1-bow" src="assets/cliparts/big-red-satin-bow-with-lo.webp" style="left:291.6px;top:64.8px;width:496.8px;height:496.8px" alt="" />
+          <img class="c s1-fall" src="assets/cliparts/tiny-present-with-an-over.webp" style="left:-32.4px;top:86.4px;width:216px;height:216px" alt="" />
+          <img class="c s1-fall" src="assets/cliparts/round-hat-box-gift-with-a.webp" style="left:864px;top:172.8px;width:237.6px;height:237.6px" alt="" />
+          <img class="c s1-fall" src="assets/cliparts/present-wrapped-in-green-.webp" style="left:-64.8px;top:799.2px;width:259.2px;height:259.2px" alt="" />
+          <img class="c s1-fall" src="assets/cliparts/cylinder-shaped-present-w.webp" style="left:864px;top:842.4px;width:259.2px;height:259.2px" alt="" />
+          <div id="s1-title"><span>Christmas</span> <span>Gifts</span></div>
+          <div id="s1-sub">watercolor clipart</div>
+          <div id="s1-rule"></div>
+          <div id="s1-shop">PETITPIXELSSTUDIO</div>
+        </div>
+      </div>
+
+      <!-- 2 · PACK -->
+      <div id="s2" class="scene clip" data-start="2.5" data-duration="3.3" data-track-index="2">
+        <div class="inner" id="s2-in">
+          <div id="s2-num">0</div>
+          <div id="s2-t">watercolor<br />cliparts</div>
+          <div id="s2-grid"><div class="cellw"><div class="tile"><img src="assets/cliparts/big-pile-of-wrapped-prese.webp" alt="" /></div></div><div class="cellw"><div class="tile"><img src="assets/cliparts/big-red-satin-bow-with-lo.webp" alt="" /></div></div><div class="cellw"><div class="tile"><img src="assets/cliparts/cozy-arrangement-of-wrapp.webp" alt="" /></div></div><div class="cellw"><div class="tile"><img src="assets/cliparts/cream-present-with-a-gold.webp" alt="" /></div></div><div class="cellw"><div class="tile"><img src="assets/cliparts/cylinder-shaped-present-w.webp" alt="" /></div></div><div class="cellw"><div class="tile"><img src="assets/cliparts/little-red-wooden-sleigh-.webp" alt="" /></div></div><div class="cellw"><div class="tile"><img src="assets/cliparts/long-flat-present-wrapped.webp" alt="" /></div></div><div class="cellw"><div class="tile"><img src="assets/cliparts/open-gift-box-with-a-ted.webp" alt="" /></div></div><div class="cellw"><div class="tile"><img src="assets/cliparts/open-gift-box-with-golde.webp" alt="" /></div></div><div class="cellw"><div class="tile"><img src="assets/cliparts/present-with-a-blank-kraf.webp" alt="" /></div></div><div class="cellw"><div class="tile"><img src="assets/cliparts/present-with-a-pine-cone-.webp" alt="" /></div></div><div class="cellw"><div class="tile"><img src="assets/cliparts/present-wrapped-in-brown-.webp" alt="" /></div></div><div class="cellw"><div class="tile"><img src="assets/cliparts/present-wrapped-in-green-.webp" alt="" /></div></div><div class="cellw"><div class="tile"><img src="assets/cliparts/present-wrapped-in-red-an.webp" alt="" /></div></div><div class="cellw"><div class="tile"><img src="assets/cliparts/present-wrapped-in-red-ta.webp" alt="" /></div></div><div class="cellw"><div class="tile"><img src="assets/cliparts/red-christmas-stocking-fi.webp" alt="" /></div></div><div class="cellw"><div class="tile"><img src="assets/cliparts/red-gift-bag-with-rope-ha.webp" alt="" /></div></div><div class="cellw"><div class="tile"><img src="assets/cliparts/round-hat-box-gift-with-a.webp" alt="" /></div></div><div class="cellw"><div class="tile"><img src="assets/cliparts/santas-red-velvet-sack-over.webp" alt="" /></div></div><div class="cellw"><div class="tile"><img src="assets/cliparts/small-decorated-christmas.webp" alt="" /></div></div><div class="cellw"><div class="tile"><img src="assets/cliparts/square-present-wrapped-in.webp" alt="" /></div></div><div class="cellw"><div class="tile"><img src="assets/cliparts/stack-of-three-presents-o.webp" alt="" /></div></div><div class="cellw"><div class="tile"><img src="assets/cliparts/tall-rectangular-present-.webp" alt="" /></div></div><div class="cellw"><div class="tile"><img src="assets/cliparts/tiny-present-with-an-over.webp" alt="" /></div></div><div class="cellw"><div class="tile"><img src="assets/cliparts/wicker-basket-full-of-wra.webp" alt="" /></div></div></div>
+          <div id="s2-band">Transparent PNG <i>✦</i> High resolution <i>✦</i> Commercial license</div>
+        </div>
+      </div>
+
+      <!-- 3 · GREETING CARDS -->
+      <div id="s3" class="scene clip" data-start="5.3" data-duration="3" data-track-index="1">
+        <div class="inner" id="s3-in">
+          <div class="pillrow"><div class="pill" id="s3-pill"><i>01</i>Greeting cards</div></div>
+          <div id="s3-cardw" class="abs" style="inset:0">
+            <div id="s3-card">
+              <div class="frameline"></div>
+              <img class="c s3-pop" src="assets/cliparts/cozy-arrangement-of-wrapp.webp" style="left:97.2px;top:54px;width:453.6px;height:410.4px" alt="" />
+              <div id="s3-mc">Merry Christmas</div>
+              <div id="s3-hny">&amp; happy new year</div>
+              <div id="s3-love">— with all our love</div>
+            </div>
+          </div>
+          <img class="c s3-pop" src="assets/cliparts/big-red-satin-bow-with-lo.webp" style="left:712.8px;top:151.2px;width:216px;height:216px;rotate:14deg" alt="" />
+          <img class="c s3-pop" src="assets/cliparts/present-with-a-pine-cone-.webp" style="left:64.8px;top:799.2px;width:237.6px;height:237.6px" alt="" />
+        </div>
+      </div>
+
+      <!-- 4 · TAGS & STICKERS -->
+      <div id="s4" class="scene clip" data-start="7.8" data-duration="3" data-track-index="2">
+        <div class="inner" id="s4-in">
+          <div class="pillrow"><div class="pill" id="s4-pill"><i>02</i>Gift tags &amp; stickers</div></div>
+          <div class="tagw" style="left:75.6px;top:-43.2px;rotate:-6deg"><div class="tagsw" style="position:absolute;inset:0;transform-origin:50% 0">
+            <div class="string"></div>
+            <div class="tagk"><div class="hole"></div><img class="c" src="assets/cliparts/present-wrapped-in-red-ta.webp" style="left:21.6px;top:86.4px;width:237.6px;height:216px" alt="" /><div class="tx">For you</div></div>
+          </div></div>
+          <div class="tagw" style="left:399.6px;top:-108px;rotate:3deg"><div class="tagsw" style="position:absolute;inset:0;transform-origin:50% 0">
+            <div class="string"></div>
+            <div class="tagk"><div class="hole"></div><img class="c" src="assets/cliparts/red-christmas-stocking-fi.webp" style="left:21.6px;top:86.4px;width:237.6px;height:216px" alt="" /><div class="tx">Love,<br />Santa</div></div>
+          </div></div>
+          <div class="abs" style="left:766.8px;top:259.2px;rotate:8deg"><div class="stk"><img src="assets/cliparts/small-decorated-christmas.webp" alt="" /></div></div>
+          <div class="abs" style="left:734.4px;top:540px;rotate:-6deg"><div class="stk"><img src="assets/cliparts/santas-red-velvet-sack-over.webp" alt="" /></div></div>
+          <div class="abs" style="left:129.6px;top:756px"><div class="stk" style="width:172.8px;height:172.8px"><img src="assets/cliparts/open-gift-box-with-a-ted.webp" alt="" /></div></div>
+          <div class="abs" style="left:432px;top:734.4px;rotate:10deg"><div class="stk" style="width:183.6px;height:183.6px"><img src="assets/cliparts/red-gift-bag-with-rope-ha.webp" alt="" /></div></div>
+          <div class="abs" style="left:766.8px;top:820.8px"><div class="stk" style="width:162px;height:162px"><img src="assets/cliparts/tiny-present-with-an-over.webp" alt="" /></div></div>
+        </div>
+      </div>
+
+      <!-- 5 · AND SO MUCH MORE -->
+      <div id="s5" class="scene clip" data-start="10.3" data-duration="2.9" data-track-index="1">
+        <div class="inner" id="s5-in">
+          <div class="pillrow"><div class="pill" id="s5-pill"><i>03</i>And so much more…</div></div>
+          <div class="abs s5-mk" style="left:54px;top:280.8px;width:302.4px;height:475.2px;rotate:-4deg"><div class="mk" style="inset:0">
+            <img class="c s5-art" src="assets/cliparts/small-decorated-christmas.webp" style="left:43.2px;top:21.6px;width:216px;height:216px" alt="" />
+            <div class="h" style="margin-top:248.4px">Christmas<br />Party</div>
+            <div class="s" style="margin-top:21.6px">Sat · Dec 20 · 7 pm</div>
+          </div></div>
+          <div class="abs s5-mk" style="left:388.8px;top:216px;width:302.4px;height:496.8px"><div class="mk" style="inset:0">
+            <div class="h" style="margin-top:32.4px;text-align:left;padding-left:32.4px">December</div>
+            <div class="lines" style="top:129.6px"></div><div class="lines" style="top:183.6px"></div><div class="lines" style="top:237.6px"></div><div class="lines" style="top:291.6px"></div><div class="lines" style="top:345.6px"></div>
+            <img class="c s5-art" src="assets/cliparts/wicker-basket-full-of-wra.webp" style="left:118.8px;top:324px;width:183.6px;height:172.8px" alt="" />
+          </div></div>
+          <div class="abs s5-mk" style="left:723.6px;top:280.8px;width:302.4px;height:432px;rotate:4deg"><div class="mk" style="inset:0">
+            <div class="igbar"><span class="av"></span>your.shop</div>
+            <div style="height:302.4px;background:#F2E6D3;position:relative"><img class="c s5-art" src="assets/cliparts/open-gift-box-with-golde.webp" style="left:32.4px;top:21.6px;width:237.6px;height:259.2px" alt="" /></div>
+            <div class="igbar" style="color:var(--red)">♥ ✉ ↗</div>
+          </div></div>
+          <div id="s5-cap">Invitations <i>✦</i> Planners <i>✦</i> Social media</div>
+        </div>
+      </div>
+
+      <!-- 6 · CTA -->
+      <div id="s6" class="scene clip" data-start="12.8" data-duration="2.2" data-track-index="2">
+        <div class="inner" id="s6-in">
+          <img class="c" id="s6-pile" src="assets/cliparts/stack-of-three-presents-o.webp" style="left:302.4px;top:86.4px;width:475.2px;height:496.8px" alt="" />
+          <div class="spark" style="left:194.4px;top:140.4px">✦</div>
+          <div class="spark" style="left:810px;top:97.2px">✦</div>
+          <div class="spark" style="left:853.2px;top:421.2px">✦</div>
+          <div class="spark" style="left:140.4px;top:442.8px">✦</div>
+          <div id="s6-shop">PetitPixels<em>Studio</em></div>
+          <div id="s6-perks"><div>25 cliparts <i>✦</i> Commercial license included</div><div>Instant download</div></div>
+          <div id="s6-btnrow"><div id="s6-btn">Add to cart</div></div>
+        </div>
+      </div>
+
+      <div id="wipe-clip" class="clip" data-start="2.05" data-duration="0.9" data-track-index="3" style="position:absolute;inset:0;pointer-events:none">
+        <div id="wipe"></div>
+      </div>
     </div>
+
     <script>
       const tl = gsap.timeline({ paused: true });
-      // Example: tl.fromTo("#title", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6 }, 0);
+      const W = 1080;
+
+      // ── 1 · Hook (0 – 2.5)
+      tl.fromTo("#s1-bow", { scale: 0, rotation: -12 }, { scale: 1, rotation: 0, duration: 0.7, ease: "back.out(1.8)" }, 0.05);
+      tl.fromTo(".s1-fall", { y: -420, rotation: (i) => [-40, 30, -25, 35][i] }, { y: 0, rotation: (i) => [-14, 10, 8, -12][i], duration: 0.8, ease: "power3.out", stagger: 0.09 }, 0.15);
+      tl.fromTo("#s1-title span", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out", stagger: 0.12 }, 0.45);
+      tl.fromTo("#s1-sub", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power2.out" }, 0.8);
+      tl.fromTo("#s1-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power2.inOut" }, 1.0);
+      tl.fromTo("#s1-shop", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 1.1);
+      tl.fromTo("#s1-bow", { y: 0 }, { y: -10, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0.8);
+
+      // wipe 1 → 2 (green panel sweeps right → left, covers at 2.5)
+      tl.fromTo("#wipe", { x: W }, { x: -1300, duration: 0.9, ease: "power2.inOut" }, 2.05);
+
+      // ── 2 · Pack (2.5 – 5.8)
+      const T2 = 2.5;
+      tl.fromTo("#s2-num", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(2)" }, T2 + 0.15);
+      const counter = { v: 0 };
+      tl.fromTo(counter, { v: 0 }, { v: 25, duration: 1.2, ease: "power1.out", onUpdate: () => { document.getElementById("s2-num").textContent = Math.round(counter.v); } }, T2 + 0.2);
+      tl.fromTo("#s2-t", { x: 40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.5, ease: "power2.out" }, T2 + 0.3);
+      tl.fromTo("#s2-grid .tile", { scale: 0, rotation: -10 }, { scale: 1, rotation: 0, duration: 0.45, ease: "back.out(2)", stagger: { grid: [5, 5], from: 0, axis: null, amount: 1.1 } }, T2 + 0.25);
+      tl.fromTo("#s2-band", { y: 110 }, { y: 0, duration: 0.5, ease: "power3.out" }, T2 + 1.5);
+      tl.fromTo("#s2-grid", { scale: 1 }, { scale: 1.03, duration: 1.8, ease: "sine.inOut" }, T2 + 1.3);
+
+      // push 2 → 3
+      const push = (outSel, inSel, T) => {
+        tl.fromTo(outSel, { x: 0 }, { x: -W, duration: 0.5, ease: "power3.inOut", immediateRender: false }, T);
+        tl.fromTo(inSel, { x: W }, { x: 0, duration: 0.5, ease: "power3.inOut" }, T);
+      };
+      push("#s2-in", "#s3-in", 5.3);
+
+      // ── 3 · Greeting cards (5.3 – 8.3)
+      const T3 = 5.3;
+      tl.fromTo("#s3-pill", { y: -80, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "back.out(2)" }, T3 + 0.35);
+      tl.fromTo("#s3-cardw", { y: 160, rotation: 8 }, { y: 0, rotation: 0, duration: 0.8, ease: "power3.out" }, T3 + 0.2);
+      tl.fromTo(".s3-pop", { scale: 0 }, { scale: 1, duration: 0.45, ease: "back.out(2.2)", stagger: 0.15 }, T3 + 0.7);
+      tl.fromTo("#s3-mc", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.7, ease: "power2.inOut" }, T3 + 1.15);
+      tl.fromTo("#s3-hny", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4 }, T3 + 1.6);
+      tl.fromTo("#s3-love", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4 }, T3 + 1.75);
+
+      push("#s3-in", "#s4-in", 7.8);
+
+      // ── 4 · Tags & stickers (7.8 – 10.8)
+      const T4 = 7.8;
+      tl.fromTo("#s4-pill", { y: -80, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "back.out(2)" }, T4 + 0.35);
+      tl.fromTo(".tagsw", { y: -700 }, { y: 0, duration: 0.6, ease: "power3.out", stagger: 0.15 }, T4 + 0.2);
+      tl.fromTo(".tagsw", { rotation: 14 }, { rotation: 0, duration: 1.6, ease: "elastic.out(1, 0.35)", stagger: 0.15 }, T4 + 0.5);
+      tl.fromTo("#s4 .stk", { scale: 1.6, opacity: 0, boxShadow: "0 40px 50px rgba(0,0,0,0.25)" }, { scale: 1, opacity: 1, boxShadow: "0 11px 22px rgba(0,0,0,0.18)", duration: 0.35, ease: "power3.in", stagger: 0.12 }, T4 + 0.8);
+
+      // ── 5 · And so much more (10.3 – 13.2)
+      push("#s4-in", "#s5-in", 10.3);
+      const T5 = 10.3;
+      tl.fromTo("#s5-pill", { y: -80, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "back.out(2)" }, T5 + 0.35);
+      tl.fromTo(".s5-mk", { y: 520 }, { y: 0, duration: 0.65, ease: "power3.out", stagger: 0.15 }, T5 + 0.25);
+      tl.fromTo(".s5-art", { scale: 0 }, { scale: 1, duration: 0.4, ease: "back.out(2.2)", stagger: 0.15 }, T5 + 0.8);
+      tl.fromTo("#s5-cap", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, T5 + 1.2);
+
+      // crossfade 5 → 6
+      tl.fromTo("#s5-in", { opacity: 1 }, { opacity: 0, duration: 0.4, ease: "power1.inOut", immediateRender: false }, 12.8);
+
+      // ── 6 · CTA (12.8 – 15)
+      const T6 = 12.8;
+      tl.fromTo("#s6-in", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.inOut" }, T6);
+      tl.fromTo("#s6-pile", { scale: 0.75, y: 40 }, { scale: 1, y: 0, duration: 0.7, ease: "back.out(1.6)" }, T6 + 0.05);
+      tl.fromTo("#s6-shop", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, T6 + 0.3);
+      tl.fromTo("#s6-perks", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "power2.out" }, T6 + 0.5);
+      tl.fromTo("#s6-btn", { scale: 0 }, { scale: 1, duration: 0.45, ease: "back.out(2.2)" }, T6 + 0.7);
+      tl.fromTo("#s6-btn", { scale: 1 }, { scale: 1.07, duration: 0.25, ease: "sine.inOut", yoyo: true, repeat: 3, immediateRender: false }, T6 + 1.2);
+      tl.fromTo(".spark", { scale: 0, rotation: 0 }, { scale: 1, rotation: 90, duration: 0.5, ease: "back.out(2)", stagger: 0.1 }, T6 + 0.4);
+
       window.__timelines["main"] = tl;
-      tl.seek(0);
     </script>
   </body>
 </html>

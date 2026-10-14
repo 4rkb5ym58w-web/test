@@ -1,0 +1,936 @@
+{
+  "ok": false,
+  "strict": false,
+  "browserSkipped": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 9,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "duplicate_media_discovery_risk",
+        "severity": "warning",
+        "message": "Detected 3 matching img entries with the same source/start/duration.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/test/videos/etsy-cliparts-cadeaux-noel/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Avoid duplicated media nodes that can be discovered twice during compilation."
+      },
+      {
+        "code": "duplicate_media_discovery_risk",
+        "severity": "warning",
+        "message": "Detected 2 matching img entries with the same source/start/duration.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/test/videos/etsy-cliparts-cadeaux-noel/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Avoid duplicated media nodes that can be discovered twice during compilation."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"s1\"> is a timeline element that contains nested <div id=\"s1-in\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#s1",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/test/videos/etsy-cliparts-cadeaux-noel/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"s1\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"s2\"> is a timeline element that contains nested <div id=\"s2-in\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#s2",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/test/videos/etsy-cliparts-cadeaux-noel/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"s2\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"s3\"> is a timeline element that contains nested <div id=\"s3-in\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#s3",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/test/videos/etsy-cliparts-cadeaux-noel/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"s3\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"s4\"> is a timeline element that contains nested <div id=\"s4-in\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#s4",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/test/videos/etsy-cliparts-cadeaux-noel/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"s4\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"s5\"> is a timeline element that contains nested <div id=\"s5-in\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#s5",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/test/videos/etsy-cliparts-cadeaux-noel/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"s5\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"s6\"> is a timeline element that contains nested <div id=\"s6-in\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#s6",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/test/videos/etsy-cliparts-cadeaux-noel/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"s6\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"wipe-clip\"> is a timeline element that contains nested <div id=\"wipe\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#wipe-clip",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/test/videos/etsy-cliparts-cadeaux-noel/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"wipe-clip\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      }
+    ],
+    "filesScanned": 1
+  },
+  "runtime": {
+    "ok": false,
+    "errorCount": 2,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "request_failed",
+        "severity": "error",
+        "message": "Failed to load npm/gsap@3.14.2/dist/gsap.min.js: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-composition-id": "main",
+          "data-start": "0",
+          "data-duration": "15",
+          "data-width": "1080",
+          "data-height": "1080"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1080
+        },
+        "time": 0,
+        "url": "https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"
+      },
+      {
+        "code": "page_error",
+        "severity": "error",
+        "message": "Cannot read properties of undefined (reading 'timeline')",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-composition-id": "main",
+          "data-start": "0",
+          "data-duration": "15",
+          "data-width": "1080",
+          "data-height": "1080"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1080
+        },
+        "time": 0
+      }
+    ]
+  },
+  "layout": {
+    "ok": false,
+    "errorCount": 1,
+    "warningCount": 7,
+    "infoCount": 7,
+    "findings": [
+      {
+        "code": "content_overlap",
+        "severity": "error",
+        "time": 5.833,
+        "selector": "#s3-mc",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 350.04,
+          "top": 674.77,
+          "right": 751.82,
+          "bottom": 874.32,
+          "width": 401.78,
+          "height": 199.55
+        },
+        "containerSelector": "#s3-hny",
+        "text": "Merry Christmas",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 350.04,
+          "y": 674.77,
+          "width": 401.78,
+          "height": 199.55
+        },
+        "firstSeen": 5.375,
+        "lastSeen": 8.25,
+        "occurrences": 25,
+        "heldMs": 2875,
+        "times": [
+          5.375,
+          5.5,
+          5.625,
+          5.75,
+          5.833,
+          5.875,
+          6,
+          6.125,
+          6.25,
+          6.375,
+          6.5,
+          6.625,
+          6.75,
+          6.875,
+          7,
+          7.125,
+          7.25,
+          7.375,
+          7.5,
+          7.625,
+          7.75,
+          7.875,
+          8,
+          8.125,
+          8.25
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "warning",
+        "time": 5.375,
+        "selector": "#s2-t",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 421.19,
+          "top": 69.59,
+          "right": 733.78,
+          "bottom": 217.63,
+          "width": 312.59,
+          "height": 148.04
+        },
+        "containerSelector": "#s3-pill",
+        "text": "watercolor cliparts",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 421.19,
+          "y": 69.59,
+          "width": 312.59,
+          "height": 148.04
+        },
+        "firstSeen": 5.375,
+        "lastSeen": 5.75,
+        "occurrences": 4,
+        "heldMs": 375,
+        "times": [
+          5.375,
+          5.5,
+          5.625,
+          5.75
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "warning",
+        "time": 7.875,
+        "selector": "#s3-pill",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 379.44,
+          "top": 82.09,
+          "right": 762.88,
+          "bottom": 127.09,
+          "width": 383.44,
+          "height": 45
+        },
+        "containerSelector": "#s4-pill",
+        "text": "01GREETING CARDS",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 379.44,
+          "y": 82.09,
+          "width": 383.44,
+          "height": 45
+        },
+        "firstSeen": 7.875,
+        "lastSeen": 8.25,
+        "occurrences": 4,
+        "heldMs": 375,
+        "times": [
+          7.875,
+          8,
+          8.125,
+          8.25
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "warning",
+        "time": 7.875,
+        "selector": "#s3-pill > i:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 317.11,
+          "top": 82.09,
+          "right": 362.14,
+          "bottom": 127.09,
+          "width": 45.03,
+          "height": 45
+        },
+        "containerSelector": "#s4-pill",
+        "text": "01",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 317.11,
+          "y": 82.09,
+          "width": 45.03,
+          "height": 45
+        },
+        "firstSeen": 7.875,
+        "lastSeen": 8.25,
+        "occurrences": 4,
+        "heldMs": 375,
+        "times": [
+          7.875,
+          8,
+          8.125,
+          8.25
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "warning",
+        "time": 10.375,
+        "selector": "#s4-pill",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 329.56,
+          "top": 82.09,
+          "right": 820.03,
+          "bottom": 127.09,
+          "width": 490.47,
+          "height": 45
+        },
+        "containerSelector": "#s5-pill",
+        "text": "02GIFT TAGS & STICKERS",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 329.56,
+          "y": 82.09,
+          "width": 490.47,
+          "height": 45
+        },
+        "firstSeen": 10.375,
+        "lastSeen": 10.75,
+        "occurrences": 4,
+        "heldMs": 375,
+        "times": [
+          10.375,
+          10.5,
+          10.625,
+          10.75
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "warning",
+        "time": 10.375,
+        "selector": "#s4-pill > i:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 259.97,
+          "top": 82.09,
+          "right": 312.27,
+          "bottom": 127.09,
+          "width": 52.3,
+          "height": 45
+        },
+        "containerSelector": "#s5-pill > i:nth-of-type(1)",
+        "text": "02",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 259.97,
+          "y": 82.09,
+          "width": 52.3,
+          "height": 45
+        },
+        "firstSeen": 10.375,
+        "lastSeen": 10.75,
+        "occurrences": 4,
+        "heldMs": 375,
+        "times": [
+          10.375,
+          10.5,
+          10.625,
+          10.75
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "warning",
+        "time": 12.875,
+        "selector": "div.s",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 99.47,
+          "top": 619.65,
+          "right": 327.79,
+          "bottom": 658.45,
+          "width": 228.32,
+          "height": 38.8
+        },
+        "containerSelector": "#s6-shop",
+        "text": "SAT · DEC 20 · 7 PM",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 99.47,
+          "y": 619.65,
+          "width": 228.32,
+          "height": 38.8
+        },
+        "firstSeen": 12.875,
+        "lastSeen": 13.125,
+        "occurrences": 3,
+        "heldMs": 250,
+        "times": [
+          12.875,
+          13,
+          13.125
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "warning",
+        "time": 12.875,
+        "selector": "#s5-in > div:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(3)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 733.02,
+          "top": 643.27,
+          "right": 786.66,
+          "bottom": 669.85,
+          "width": 53.64,
+          "height": 26.58
+        },
+        "containerSelector": "#s6-shop > em:nth-of-type(1)",
+        "text": "♥ ✉ ↗",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 733.02,
+          "y": 643.27,
+          "width": 53.64,
+          "height": 26.58
+        },
+        "firstSeen": 12.875,
+        "lastSeen": 13.125,
+        "occurrences": 3,
+        "heldMs": 250,
+        "times": [
+          12.875,
+          13,
+          13.125
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 2.5,
+        "selector": "#s2-num",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 194.39,
+          "top": 29.59,
+          "right": 301.64,
+          "bottom": 228.59,
+          "width": 107.25,
+          "height": 199
+        },
+        "containerSelector": "#wipe",
+        "text": "0",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 194.39,
+          "y": 29.59,
+          "width": 107.25,
+          "height": 199
+        },
+        "firstSeen": 2.5,
+        "lastSeen": 2.5,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          2.5
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 2.5,
+        "selector": "#s2-t",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 421.19,
+          "top": 69.59,
+          "right": 733.78,
+          "bottom": 217.63,
+          "width": 312.59,
+          "height": 148.03
+        },
+        "containerSelector": "#wipe",
+        "text": "watercolorcliparts",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 421.19,
+          "y": 69.59,
+          "width": 312.59,
+          "height": 148.03
+        },
+        "firstSeen": 2.5,
+        "lastSeen": 2.5,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          2.5
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 2.5,
+        "selector": "#s2-band",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 11.28,
+          "top": 1014.91,
+          "right": 1068.72,
+          "bottom": 1047.91,
+          "width": 1057.44,
+          "height": 33
+        },
+        "containerSelector": "#wipe",
+        "text": "Transparent PNG High resolution Commercial license",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 11.28,
+          "y": 1014.91,
+          "width": 1057.44,
+          "height": 33
+        },
+        "firstSeen": 2.5,
+        "lastSeen": 2.5,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          2.5
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 2.5,
+        "selector": "#s2-band > i:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 330.8,
+          "top": 1014.91,
+          "right": 354.5,
+          "bottom": 1047.91,
+          "width": 23.7,
+          "height": 33
+        },
+        "containerSelector": "#wipe",
+        "text": "✦",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 330.8,
+          "y": 1014.91,
+          "width": 23.7,
+          "height": 33
+        },
+        "firstSeen": 2.5,
+        "lastSeen": 2.5,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          2.5
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 2.5,
+        "selector": "#s2-band > i:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 679.92,
+          "top": 1014.91,
+          "right": 703.63,
+          "bottom": 1047.91,
+          "width": 23.7,
+          "height": 33
+        },
+        "containerSelector": "#wipe",
+        "text": "✦",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 679.92,
+          "y": 1014.91,
+          "width": 23.7,
+          "height": 33
+        },
+        "firstSeen": 2.5,
+        "lastSeen": 2.5,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          2.5
+        ]
+      },
+      {
+        "code": "panel_out_of_canvas",
+        "severity": "info",
+        "time": 9.167,
+        "selector": "#s4-in > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Painted panel extends outside the composition canvas.",
+        "rect": {
+          "left": 214.2,
+          "top": -43.4,
+          "right": 251.84,
+          "bottom": 279.23,
+          "width": 37.64,
+          "height": 322.62
+        },
+        "containerSelector": "#root",
+        "text": "",
+        "fixHint": "Move the panel inward, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1080,
+          "width": 1080,
+          "height": 1080
+        },
+        "overflow": {
+          "top": 43.4
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 214.2,
+          "y": -43.4,
+          "width": 37.64,
+          "height": 322.62
+        },
+        "firstSeen": 9.167,
+        "lastSeen": 9.167,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          9.167
+        ]
+      },
+      {
+        "code": "panel_out_of_canvas",
+        "severity": "info",
+        "time": 9.167,
+        "selector": "#s4-in > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Painted panel extends outside the composition canvas.",
+        "rect": {
+          "left": 521.23,
+          "top": -108.09,
+          "right": 541.98,
+          "bottom": 215.66,
+          "width": 20.75,
+          "height": 323.75
+        },
+        "containerSelector": "#root",
+        "text": "",
+        "fixHint": "Move the panel inward, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1080,
+          "width": 1080,
+          "height": 1080
+        },
+        "overflow": {
+          "top": 108.09
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 521.23,
+          "y": -108.09,
+          "width": 20.75,
+          "height": 323.75
+        },
+        "firstSeen": 9.167,
+        "lastSeen": 9.167,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          9.167
+        ]
+      }
+    ],
+    "duration": 15,
+    "samples": [
+      0.833,
+      2.5,
+      4.167,
+      5.833,
+      7.5,
+      9.167,
+      10.833,
+      12.5,
+      14.167
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 15,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 4,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 2.85:1; WCAG AA requires 3:1.",
+        "text": "✦",
+        "fg": "rgb(184,144,58)",
+        "bg": "rgb(255,250,240)",
+        "ratio": 2.85,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(179,140,56)",
+        "large": true,
+        "selector": "div > div:nth-of-type(6) > div > div:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 194.390625,
+          "y": 140.390625,
+          "width": 54,
+          "height": 54
+        },
+        "time": 14.167,
+        "times": [
+          14.167
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 2.59:1; WCAG AA requires 3:1.",
+        "text": "✦",
+        "fg": "rgb(184,144,58)",
+        "bg": "rgb(246,239,227)",
+        "ratio": 2.59,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(170,133,54)",
+        "large": true,
+        "selector": "div > div:nth-of-type(6) > div > div:nth-of-type(2)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 810,
+          "y": 97.1875,
+          "width": 54,
+          "height": 54
+        },
+        "time": 14.167,
+        "times": [
+          14.167
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 2.53:1; WCAG AA requires 3:1.",
+        "text": "✦",
+        "fg": "rgb(184,144,58)",
+        "bg": "rgb(244,236,222)",
+        "ratio": 2.53,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(167,131,53)",
+        "large": true,
+        "selector": "div > div:nth-of-type(6) > div > div:nth-of-type(3)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 853.1875,
+          "y": 421.1875,
+          "width": 54,
+          "height": 54
+        },
+        "time": 14.167,
+        "times": [
+          14.167
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 2.71:1; WCAG AA requires 3:1.",
+        "text": "✦",
+        "fg": "rgb(184,144,58)",
+        "bg": "rgb(250,244,234)",
+        "ratio": 2.71,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(174,136,55)",
+        "large": true,
+        "selector": "div > div:nth-of-type(6) > div > div:nth-of-type(4)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 140.390625,
+          "y": 442.796875,
+          "width": 54,
+          "height": 54
+        },
+        "time": 14.167,
+        "times": [
+          14.167
+        ]
+      }
+    ],
+    "enabled": true,
+    "samples": [
+      0.833,
+      4.167,
+      7.5,
+      10.833,
+      14.167
+    ],
+    "checked": 34,
+    "passed": 30
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  }
+}
