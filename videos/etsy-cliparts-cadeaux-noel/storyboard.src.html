@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Storyboard — Cliparts Cadeaux de Noël</title>
+<style>
+@font-face{font-family:"Fraunces";font-weight:400;font-style:normal;src:url({{font:fraunces-latin-400-normal}}) format("woff2")}
+@font-face{font-family:"Fraunces";font-weight:700;font-style:normal;src:url({{font:fraunces-latin-700-normal}}) format("woff2")}
+@font-face{font-family:"Fraunces";font-weight:400;font-style:italic;src:url({{font:fraunces-latin-400-italic}}) format("woff2")}
+@font-face{font-family:"Fraunces";font-weight:600;font-style:italic;src:url({{font:fraunces-latin-600-italic}}) format("woff2")}
+@font-face{font-family:"Montserrat";font-weight:500;src:url({{font:montserrat-latin-500-normal}}) format("woff2")}
+@font-face{font-family:"Montserrat";font-weight:700;src:url({{font:montserrat-latin-700-normal}}) format("woff2")}
+:root{
+  --paper:#F6EFE3; --paper-2:#EFE4D2; --red:#A8232B; --pine:#2E5A3B; --gold:#B8903A; --ink:#3B2A20; --kraft:#C8A273;
+  --sheet:#1F1A17; --sheet-ink:#F3EADB; --muted:#A99C8A;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--sheet);color:var(--sheet-ink);font-family:Montserrat,system-ui,sans-serif;padding:40px 16px 64px}
+header{max-width:1240px;margin:0 auto 28px}
+header h1{font-family:Fraunces,serif;font-weight:700;font-size:clamp(26px,4vw,42px);letter-spacing:-.02em}
+header h1 em{font-weight:400;color:var(--gold)}
+header p{color:var(--muted);margin-top:6px;font-size:15px;max-width:70ch;line-height:1.5}
+.tag{display:inline-block;margin-top:12px;border:1px solid #4a3f37;border-radius:99px;padding:5px 12px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--sheet-ink)}
+.grid{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:28px 22px}
+@media (max-width:900px){.grid{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.grid{grid-template-columns:1fr}}
+.cell{display:flex;flex-direction:column;gap:8px}
+.frame{aspect-ratio:1/1;container-type:inline-size;position:relative;overflow:hidden;border-radius:6px;background:var(--paper);color:var(--ink);
+  background-image:radial-gradient(circle at 20% 15%,#fffaf1 0,transparent 45%),radial-gradient(circle at 85% 90%,#efe2cc 0,transparent 50%)}
+.label{display:flex;justify-content:space-between;font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.label b{color:var(--sheet-ink)} .label span{color:var(--muted)}
+.note{font-size:13px;line-height:1.5;color:#d9cfbf}
+.note b{color:var(--sheet-ink)}
+.chip{align-self:flex-start;font-size:11px;padding:3px 9px;border-radius:99px;background:#352d27;color:var(--gold);letter-spacing:.05em;text-transform:uppercase}
+.abs{position:absolute}
+img.c{position:absolute;object-fit:contain;filter:drop-shadow(0 1.2cqw 1.2cqw rgba(80,50,30,.18))}
+.serif{font-family:Fraunces,serif}
+.pill{position:absolute;left:50%;transform:translateX(-50%);top:6cqw;background:var(--pine);color:#fff;font:700 3.4cqw Montserrat;letter-spacing:.08em;text-transform:uppercase;padding:1.6cqw 3.6cqw;border-radius:99px;white-space:nowrap}
+.pill i{font-style:normal;color:#f0d79a;margin-right:1.6cqw}
+/* frame 1 */
+.f1 h2{position:absolute;left:0;right:0;top:55cqw;text-align:center;font:700 11cqw/1 Fraunces;letter-spacing:-.03em;color:var(--red)}
+.f1 h3{position:absolute;left:0;right:0;top:70cqw;text-align:center;font:italic 400 7.4cqw/1 Fraunces;color:var(--pine)}
+.f1 .rule{position:absolute;left:38cqw;right:38cqw;top:82cqw;height:.4cqw;background:var(--gold)}
+.f1 .k{position:absolute;left:0;right:0;top:85cqw;text-align:center;font:700 2.6cqw Montserrat;letter-spacing:.3em;color:var(--gold)}
+/* frame 2 */
+.f2 .g{position:absolute;left:18cqw;right:18cqw;top:21cqw;display:grid;grid-template-columns:repeat(5,1fr);gap:1.2cqw}
+.f2 .g div{aspect-ratio:1;background:rgba(255,255,255,.55);border-radius:1.2cqw;display:grid;place-items:center}
+.f2 .g img{width:88%;height:88%;object-fit:contain}
+.f2 .num{position:absolute;left:18cqw;top:4.5cqw;font:700 15cqw/1 Fraunces;color:var(--red);letter-spacing:-.04em}
+.f2 .t{position:absolute;left:39cqw;top:7cqw;font:italic 400 6cqw/1.05 Fraunces;color:var(--pine)}
+.f2 .band{position:absolute;left:0;right:0;bottom:0;height:9cqw;background:var(--pine);color:#fff;display:flex;align-items:center;justify-content:center;gap:2cqw;font:700 2.3cqw Montserrat;letter-spacing:.04em;white-space:nowrap;text-transform:uppercase}
+.f2 .band i{color:#f0d79a;font-style:normal}
+/* frame 3 */
+.card{position:absolute;left:20cqw;top:20cqw;width:60cqw;height:72cqw;background:#fffdf8;border-radius:1cqw;box-shadow:0 3cqw 6cqw rgba(70,40,20,.22);transform:rotate(-3deg);border:.5cqw solid #fffdf8;outline:.3cqw solid var(--gold);outline-offset:-2.6cqw}
+.card .jn{position:absolute;left:0;right:0;top:44cqw;text-align:center;font:italic 600 8.4cqw/1 Fraunces;color:var(--red)}
+.card .sub{position:absolute;left:0;right:0;top:55cqw;text-align:center;font:500 2.4cqw Montserrat;letter-spacing:.25em;text-transform:uppercase;color:var(--pine)}
+.card .fam{position:absolute;left:0;right:0;top:61cqw;text-align:center;font:italic 400 3cqw Fraunces;color:var(--ink)}
+/* frame 4 */
+.tagk{position:absolute;width:26cqw;height:40cqw;background:var(--kraft);clip-path:polygon(20% 0,80% 0,100% 14%,100% 100%,0 100%,0 14%);box-shadow:0 2cqw 3cqw rgba(0,0,0,.2)}
+.tagk::before{content:"";position:absolute;left:50%;top:5cqw;width:3.2cqw;height:3.2cqw;margin-left:-1.6cqw;border-radius:50%;background:var(--paper)}
+.tagk .tx{position:absolute;left:0;right:0;bottom:4.5cqw;text-align:center;font:italic 600 3.6cqw/1.1 Fraunces;color:var(--ink)}
+.string{position:absolute;width:.35cqw;background:#8b6a43}
+.stk{position:absolute;width:19cqw;height:19cqw;border-radius:50%;background:#fff;box-shadow:0 1cqw 2cqw rgba(0,0,0,.18);display:grid;place-items:center}
+.stk img{width:80%;height:80%;object-fit:contain}
+/* frame 5 */
+.mk{position:absolute;background:#fffdf8;box-shadow:0 2.4cqw 4cqw rgba(70,40,20,.2);border-radius:1cqw;overflow:hidden}
+.mk .h{font:italic 600 3.4cqw/1.05 Fraunces;color:var(--red);text-align:center}
+.mk .s{font:700 1.7cqw Montserrat;letter-spacing:.14em;text-transform:uppercase;color:var(--pine);text-align:center}
+.lines{position:absolute;left:3cqw;right:3cqw;height:.25cqw;background:#e2d6c3}
+.igbar{height:5cqw;display:flex;align-items:center;gap:1.4cqw;padding:0 2cqw;font:700 1.7cqw Montserrat;color:var(--ink)}
+.igbar i{width:2.8cqw;height:2.8cqw;border-radius:50%;background:linear-gradient(45deg,#e9b44c,#c1355a)}
+.caption{position:absolute;left:0;right:0;bottom:15cqw;text-align:center;font:700 2.9cqw Montserrat;letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
+.caption i{color:var(--gold);font-style:normal;margin:0 1.4cqw}
+/* frame 6 */
+.f6 .shop{position:absolute;left:0;right:0;top:57cqw;text-align:center;font:700 9cqw/1 Fraunces;color:var(--red);letter-spacing:-.03em}
+.f6 .shop em{font-weight:400;font-style:italic;color:var(--pine)}
+.f6 .perks{position:absolute;left:0;right:0;top:69cqw;text-align:center;font:700 2.6cqw/1.7 Montserrat;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+.f6 .perks i{font-style:normal;color:var(--gold)}
+.f6 .btn{position:absolute;left:50%;transform:translateX(-50%);top:82cqw;background:var(--red);color:#fff;font:700 3.6cqw Montserrat;padding:2.4cqw 6cqw;border-radius:99px;white-space:nowrap;box-shadow:0 1.4cqw 0 #7c1a20}
+.spark{position:absolute;color:var(--gold);font-size:4cqw}
+/* closing cells */
+.meta{aspect-ratio:1/1;border:1px solid #3a322c;border-radius:6px;padding:22px;font-size:13px;line-height:1.55;color:#d9cfbf;overflow:auto}
+.meta h4{font-family:Fraunces,serif;font-size:20px;color:var(--sheet-ink);margin-bottom:12px}
+.seam{display:flex;align-items:center;gap:8px;margin:7px 0}
+.seam .n{width:28px;height:28px;border-radius:50%;background:#352d27;display:grid;place-items:center;font-weight:700;color:var(--sheet-ink);flex:none}
+.sw{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 14px}
+.sw div{width:52px;font-size:10px;text-align:center;color:var(--muted)}
+.sw div::before{content:"";display:block;height:34px;border-radius:5px;background:var(--c);margin-bottom:4px;border:1px solid #0003}
+</style>
+</head>
+<body>
+<header>
+  <h1>Cadeaux de Noël <em>— storyboard v1</em></h1>
+  <p>Vidéo d'annonce Etsy pour PetitPixelsStudio : 25 cliparts aquarelle de cadeaux de Noël, montrés tels quels puis en situation (cartes, étiquettes, stickers, invitations, planners, réseaux sociaux). Croquis fixes : la mise en page et les textes sont ceux de la vidéo finale, l'animation arrive à la construction.</p>
+  <span class="tag">1080 × 1080 · 15 s · 6 scènes · sans son</span>
+</header>
+
+<main class="grid">
+
+<!-- 01 -->
+<section class="cell">
+  <div class="frame f1" id="frame-01">
+    <img class="c" src="{{img:big-red-satin-bow-with-lo}}" style="left:27cqw;top:6cqw;width:46cqw;height:46cqw" alt="">
+    <img class="c" src="{{img:tiny-present-with-an-over}}" style="left:-3cqw;top:8cqw;width:20cqw;height:20cqw;transform:rotate(-14deg)" alt="">
+    <img class="c" src="{{img:round-hat-box-gift-with-a}}" style="left:80cqw;top:16cqw;width:22cqw;height:22cqw;transform:rotate(10deg)" alt="">
+    <img class="c" src="{{img:present-wrapped-in-green-}}" style="left:-6cqw;top:74cqw;width:24cqw;height:24cqw;transform:rotate(8deg)" alt="">
+    <img class="c" src="{{img:cylinder-shaped-present-w}}" style="left:80cqw;top:78cqw;width:24cqw;height:24cqw;transform:rotate(-12deg)" alt="">
+    <h2>Cadeaux de Noël</h2>
+    <h3>cliparts aquarelle</h3>
+    <div class="rule"></div>
+    <div class="k">PETITPIXELSSTUDIO</div>
+  </div>
+  <div class="label"><b>01 · Accroche</b><span>0,0–2,5 s</span></div>
+  <p class="note"><b>Le nœud rouge se déploie en premier</b> (il grossit depuis le centre avec un léger rebond), puis le titre monte mot à mot. Quatre cadeaux tombent doucement dans les coins.</p>
+  <span class="chip">→ volet vert vers la gauche</span>
+</section>
+
+<!-- 02 -->
+<section class="cell">
+  <div class="frame f2" id="frame-02">
+    <div class="num">25</div>
+    <div class="t">cliparts<br>aquarelle</div>
+    <div class="g">
+      {{grid}}
+    </div>
+    <div class="band">PNG transparents <i>✦</i> Haute résolution <i>✦</i> Licence commerciale</div>
+  </div>
+  <div class="label"><b>02 · Le pack</b><span>2,5–5,5 s</span></div>
+  <p class="note"><b>Le compteur grimpe de 0 à 25</b> pendant que les cliparts surgissent en vague en diagonale (haut-gauche vers bas-droite). Le bandeau vert monte en dernier.</p>
+  <span class="chip">→ glissement vers la gauche</span>
+</section>
+
+<!-- 03 -->
+<section class="cell">
+  <div class="frame f3" id="frame-03">
+    <div class="pill"><i>01</i>Cartes de vœux</div>
+    <div class="card">
+      <img class="c" src="{{img:cozy-arrangement-of-wrapp}}" style="left:8cqw;top:5cqw;width:42cqw;height:38cqw" alt="">
+      <div class="jn">Joyeux Noël</div>
+      <div class="sub">& belle année</div>
+      <div class="fam">— avec tout notre amour</div>
+    </div>
+    <img class="c" src="{{img:big-red-satin-bow-with-lo}}" style="left:66cqw;top:14cqw;width:20cqw;height:20cqw;transform:rotate(14deg)" alt="">
+    <img class="c" src="{{img:present-with-a-pine-cone-}}" style="left:6cqw;top:74cqw;width:22cqw;height:22cqw" alt="">
+  </div>
+  <div class="label"><b>03 · Cartes de vœux</b><span>5,5–8,0 s</span></div>
+  <p class="note"><b>La carte arrive en glissant et se pose en tournant légèrement</b>, puis les cliparts viennent s'y « coller » avec un petit rebond. « Joyeux Noël » s'écrit en dernier.</p>
+  <span class="chip">→ glissement vers la gauche</span>
+</section>
+
+<!-- 04 -->
+<section class="cell">
+  <div class="frame f4" id="frame-04">
+    <div class="pill"><i>02</i>Étiquettes &amp; stickers</div>
+    <div class="string" style="left:20.4cqw;top:0;height:28cqw;transform:rotate(-4deg)"></div>
+    <div class="string" style="left:49.8cqw;top:0;height:22cqw"></div>
+    <div class="tagk" style="left:7cqw;top:24cqw;transform:rotate(-6deg)">
+      <img class="c" src="{{img:present-wrapped-in-red-ta}}" style="left:2cqw;top:9cqw;width:22cqw;height:20cqw" alt=""><div class="tx">Pour toi</div></div>
+    <div class="tagk" style="left:37cqw;top:18cqw;transform:rotate(3deg)">
+      <img class="c" src="{{img:red-christmas-stocking-fi}}" style="left:2cqw;top:9cqw;width:22cqw;height:20cqw" alt=""><div class="tx">De la part<br>du Père Noël</div></div>
+    <div class="stk" style="left:71cqw;top:24cqw;transform:rotate(8deg)"><img src="{{img:small-decorated-christmas}}" alt=""></div>
+    <div class="stk" style="left:68cqw;top:50cqw;transform:rotate(-6deg)"><img src="{{img:santas-red-velvet-sack-over}}" alt=""></div>
+    <div class="stk" style="left:12cqw;top:70cqw;width:16cqw;height:16cqw"><img src="{{img:open-gift-box-with-a-ted}}" alt=""></div>
+    <div class="stk" style="left:40cqw;top:68cqw;width:17cqw;height:17cqw;transform:rotate(10deg)"><img src="{{img:red-gift-bag-with-rope-ha}}" alt=""></div>
+    <div class="stk" style="left:71cqw;top:76cqw;width:15cqw;height:15cqw"><img src="{{img:tiny-present-with-an-over}}" alt=""></div>
+  </div>
+  <div class="label"><b>04 · Étiquettes &amp; stickers</b><span>8,0–10,5 s</span></div>
+  <p class="note"><b>Les étiquettes descendent au bout de leur ficelle et se balancent</b>, puis les stickers se collent un par un (pop rapide, ombre qui s'écrase).</p>
+  <span class="chip">→ glissement vers la gauche</span>
+</section>
+
+<!-- 05 -->
+<section class="cell">
+  <div class="frame f5" id="frame-05">
+    <div class="pill"><i>03</i>Et bien plus…</div>
+    <!-- invitation -->
+    <div class="mk" style="left:5cqw;top:26cqw;width:28cqw;height:44cqw;transform:rotate(-4deg)">
+      <img class="c" src="{{img:small-decorated-christmas}}" style="left:4cqw;top:2cqw;width:20cqw;height:20cqw" alt="">
+      <div class="h" style="margin-top:23cqw">Soirée<br>de Noël</div>
+      <div class="s" style="margin-top:2cqw">Samedi 20 déc. · 19h</div>
+    </div>
+    <!-- planner -->
+    <div class="mk" style="left:36cqw;top:20cqw;width:28cqw;height:46cqw">
+      <div class="h" style="margin-top:3cqw;text-align:left;padding-left:3cqw">Décembre</div>
+      <div class="lines" style="top:12cqw"></div><div class="lines" style="top:17cqw"></div><div class="lines" style="top:22cqw"></div><div class="lines" style="top:27cqw"></div><div class="lines" style="top:32cqw"></div>
+      <img class="c" src="{{img:wicker-basket-full-of-wra}}" style="left:11cqw;top:30cqw;width:17cqw;height:16cqw" alt="">
+    </div>
+    <!-- instagram -->
+    <div class="mk" style="left:67cqw;top:26cqw;width:28cqw;height:40cqw;transform:rotate(4deg)">
+      <div class="igbar"><i></i>votre.boutique</div>
+      <div style="height:28cqw;background:#F2E6D3;position:relative"><img class="c" src="{{img:open-gift-box-with-golde}}" style="left:3cqw;top:2cqw;width:22cqw;height:24cqw" alt=""></div>
+      <div class="igbar" style="color:var(--red)">♥ ✉ ↗</div>
+    </div>
+    <div class="caption">Invitations <i>✦</i> Planners <i>✦</i> Réseaux sociaux</div>
+  </div>
+  <div class="label"><b>05 · Et bien plus</b><span>10,5–12,8 s</span></div>
+  <p class="note"><b>Les trois maquettes arrivent l'une après l'autre</b> par le bas (gauche → droite, 0,15 s d'écart), chaque clipart apparaît dedans. La légende s'écrit dessous.</p>
+  <span class="chip">→ fondu enchaîné</span>
+</section>
+
+<!-- 06 -->
+<section class="cell">
+  <div class="frame f6" id="frame-06">
+    <img class="c" src="{{img:stack-of-three-presents-o}}" style="left:28cqw;top:8cqw;width:44cqw;height:46cqw" alt="">
+    <span class="spark" style="left:20cqw;top:14cqw">✦</span><span class="spark" style="left:76cqw;top:10cqw;font-size:3cqw">✦</span><span class="spark" style="left:80cqw;top:40cqw">✦</span><span class="spark" style="left:14cqw;top:42cqw;font-size:2.6cqw">✦</span>
+    <div class="shop">PetitPixels<em>Studio</em></div>
+    <div class="perks">25 cliparts <i>✦</i> Licence commerciale incluse<br>Téléchargement instantané</div>
+    <div class="btn">Ajouter au panier</div>
+  </div>
+  <div class="label"><b>06 · Appel à l'action</b><span>12,8–15,0 s</span></div>
+  <p class="note"><b>Moment calme :</b> la pile de cadeaux se pose, les étincelles scintillent, le nom de la boutique s'écrit. Le bouton pulse deux fois, puis l'image reste fixe (dernière image lisible).</p>
+  <span class="chip">fin · image tenue</span>
+</section>
+
+<!-- seam map -->
+<section class="cell">
+  <div class="meta">
+    <h4>Enchaînements</h4>
+    <div class="seam"><span class="n">1</span>Accroche → <b>volet vert</b> vers la gauche</div>
+    <div class="seam"><span class="n">2</span>Le pack → <b>glissement</b> vers la gauche</div>
+    <div class="seam"><span class="n">3</span>Cartes → <b>glissement</b> vers la gauche</div>
+    <div class="seam"><span class="n">4</span>Étiquettes → <b>glissement</b> vers la gauche</div>
+    <div class="seam"><span class="n">5</span>Et bien plus → <b>fondu</b> (on ralentit pour la fin)</div>
+    <div class="seam"><span class="n">6</span>Fin : <b>image tenue</b> ~1 s</div>
+    <p style="margin-top:12px">Fil conducteur : le <b>papier aquarelle crème</b> reste en fond d'un bout à l'autre ; la pastille verte numérotée (01, 02, 03) marque chaque cas d'utilisation.</p>
+  </div>
+  <div class="label"><b>Enchaînements</b><span>seam map</span></div>
+</section>
+
+<!-- tokens -->
+<section class="cell">
+  <div class="meta">
+    <h4>Style</h4>
+    <div class="sw">
+      <div style="--c:#F6EFE3">papier<br>F6EFE3</div><div style="--c:#A8232B">rouge<br>A8232B</div><div style="--c:#2E5A3B">sapin<br>2E5A3B</div><div style="--c:#B8903A">or<br>B8903A</div><div style="--c:#C8A273">kraft<br>C8A273</div><div style="--c:#3B2A20">encre<br>3B2A20</div>
+    </div>
+    <p><b style="font-family:Fraunces;font-size:17px">Fraunces</b> : titres (gras) et touches manuscrites (italique).<br><b>Montserrat</b> : petites mentions et bouton.</p>
+    <p style="margin-top:10px">Palette tirée des aquarelles elles-mêmes (rouge, vert sapin, or, papier crème).</p>
+    <p style="margin-top:10px"><b>À éviter :</b> pas de prix ni de promo, pas d'effet néon ou de fond sombre, pas de « diaporama » où chaque scène n'est qu'une image fixe.</p>
+  </div>
+  <div class="label"><b>Style</b><span>tokens</span></div>
+</section>
+
+</main>
+</body>
+</html>

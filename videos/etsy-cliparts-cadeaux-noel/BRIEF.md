@@ -24,4 +24,5 @@ concrets (demande de l'utilisateur : « Intègre des cas d'utilisation des clipa
 
 - Vidéo d'annonce Etsy : 5–15 s, lue sans son → pas d'audio, tout passe par le texte et l'image.
 - Fin : nom de boutique « PetitPixelsStudio ».
-- Ne pas inventer de licence (usage commercial) ni de prix.
+- Licence commerciale incluse (confirmé par l'utilisateur) → l'afficher.
+- Aucun prix ni promo (l'utilisateur : « si je change ou mets une promo ça devient obsolète »).

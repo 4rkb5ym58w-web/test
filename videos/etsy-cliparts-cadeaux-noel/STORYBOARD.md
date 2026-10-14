@@ -7,12 +7,17 @@ audience: acheteurs Etsy créatifs
 mode: collaborative
 ---
 
+## Changes from v1 (plan)
+
+- « Je vends les cliparts avec la licence commerciale, tu peux le préciser » → mention ajoutée scènes 2 et 6.
+- « Ne précise pas de prix » → aucun prix.
+
 ## Frame 1 — Accroche
 
 - scene: Papier aquarelle crème ; un gros nœud rouge se déploie, le titre apparaît mot à mot
 - duration: 2.5s
 - transition_in: cut
-- status: outline
+- status: built
 - src: compositions/frames/01-hook.html
 
 « Cadeaux de Noël » en serif élégant, « cliparts aquarelle » en script. Quelques cadeaux tombent en douceur autour.
@@ -22,17 +27,17 @@ mode: collaborative
 - scene: Les 25 cliparts surgissent en vague dans une grille 5×5, compteur « 25 »
 - duration: 3s
 - transition_in: wipe
-- status: outline
+- status: built
 - src: compositions/frames/02-pack.html
 
-Preuve de valeur : abondance. Bandeau « 25 PNG transparents · Haute résolution ».
+Preuve de valeur : abondance. Bandeau « PNG transparents ✦ Haute résolution ✦ Licence commerciale ».
 
 ## Frame 3 — Cas d'usage : cartes de vœux
 
 - scene: Une carte « Joyeux Noël » se construit, les cliparts viennent s'y poser
 - duration: 2.5s
 - transition_in: slide
-- status: outline
+- status: built
 - src: compositions/frames/03-cartes.html
 
 Label « Cartes de vœux ».
@@ -42,7 +47,7 @@ Label « Cartes de vœux ».
 - scene: Étiquettes cadeaux kraft avec ficelle + stickers découpés qui se collent
 - duration: 2.5s
 - transition_in: slide
-- status: outline
+- status: built
 - src: compositions/frames/04-etiquettes.html
 
 Label « Étiquettes & stickers ».
@@ -52,17 +57,17 @@ Label « Étiquettes & stickers ».
 - scene: Trio de maquettes : invitation de fête, page de planner, post Instagram
 - duration: 2.3s
 - transition_in: slide
-- status: outline
+- status: built
 - src: compositions/frames/05-plus.html
 
 Label « Invitations · Planners · Réseaux sociaux ».
 
 ## Frame 6 — Appel à l'action
 
-- scene: Pile de cadeaux au centre, « PetitPixelsStudio », « Téléchargement instantané »
+- scene: Pile de cadeaux au centre, « PetitPixelsStudio », « 25 cliparts ✦ Licence commerciale incluse · Téléchargement instantané »
 - duration: 2.2s
 - transition_in: crossfade
-- status: outline
+- status: built
 - src: compositions/frames/06-cta.html
 
 Bouton « Ajouter au panier » qui pulse ; étincelles dorées.
