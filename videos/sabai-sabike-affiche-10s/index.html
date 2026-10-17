@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Sabai Sabike — affiche animée</title>
+    <script src="vendor/gsap.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #0b1630;
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #0b1630;
+        font-family: "Archivo Black", "Helvetica Neue", sans-serif;
+      }
+      .clip {
+        position: absolute;
+        inset: 0;
+      }
+
+      /* blurred backdrop fills the bands above/below the poster */
+      #bg-img {
+        position: absolute;
+        inset: -80px;
+        background: url("assets/affiche.jpg") center / cover no-repeat;
+        filter: blur(38px) saturate(1.3) brightness(0.62);
+      }
+      #bg-shade {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(120% 70% at 50% 45%, rgba(0, 0, 0, 0) 0%, rgba(4, 8, 24, 0.55) 100%);
+      }
+
+      /* camera: full stage, transform-origin top-left */
+      #cam {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 1080px;
+        height: 1920px;
+        transform-origin: 0 0;
+      }
+      /* poster space: native 1054x1567 px, scaled to 1080 wide, centred vertically */
+      #pwrap {
+        position: absolute;
+        left: 0;
+        top: 157px;
+        width: 1054px;
+        height: 1567px;
+        transform: scale(1.02467);
+        transform-origin: 0 0;
+      }
+      #poster {
+        position: absolute;
+        inset: 0;
+        background: url("assets/affiche.jpg") 0 0 / 1054px 1567px no-repeat;
+        box-shadow: 0 0 80px rgba(0, 0, 0, 0.6);
+      }
+      /* a crop of the poster, positioned at its own poster coordinates */
+      .crop {
+        position: absolute;
+        background-image: url("assets/affiche.jpg");
+        background-size: 1054px 1567px;
+        background-repeat: no-repeat;
+      }
+      #logo {
+        left: 330px;
+        top: 10px;
+        width: 430px;
+        height: 255px;
+        background-position: -330px -10px;
+        -webkit-mask-image: radial-gradient(closest-side, #000 78%, transparent 100%);
+        mask-image: radial-gradient(closest-side, #000 78%, transparent 100%);
+      }
+      #banner {
+        left: 205px;
+        top: 245px;
+        width: 665px;
+        height: 125px;
+        background-position: -205px -245px;
+      }
+      #qr {
+        left: 650px;
+        top: 415px;
+        width: 350px;
+        height: 135px;
+        background-position: -650px -415px;
+        border-radius: 14px;
+      }
+      #contact {
+        left: 70px;
+        top: 1440px;
+        width: 940px;
+        height: 120px;
+        background-position: -70px -1440px;
+        border-radius: 16px;
+      }
+      .glow {
+        position: absolute;
+        border-radius: 24px;
+        box-shadow:
+          0 0 0 4px rgba(255, 214, 120, 0.9),
+          0 0 50px 14px rgba(255, 170, 60, 0.75);
+        opacity: 0;
+      }
+      #contact-glow {
+        left: 70px;
+        top: 1440px;
+        width: 940px;
+        height: 120px;
+      }
+      #qr-glow {
+        left: 868px;
+        top: 418px;
+        width: 132px;
+        height: 130px;
+        border-radius: 12px;
+      }
+
+      /* sun flare sits over the poster's sun */
+      #flare {
+        position: absolute;
+        left: 670px;
+        top: 825px;
+        width: 900px;
+        height: 900px;
+        margin: -450px 0 0 -450px;
+        background: radial-gradient(circle, rgba(255, 230, 160, 0.95) 0%, rgba(255, 150, 60, 0.45) 22%, rgba(255, 120, 40, 0) 60%);
+        mix-blend-mode: screen;
+        opacity: 0.35;
+      }
+
+      /* badge shine sweeps */
+      .shine {
+        position: absolute;
+        overflow: hidden;
+        -webkit-mask-image: linear-gradient(#000, #000);
+      }
+      .shine i {
+        position: absolute;
+        top: -20%;
+        left: -40%;
+        width: 30%;
+        height: 140%;
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0));
+        transform: skewX(-20deg);
+        mix-blend-mode: overlay;
+      }
+      #shine-1 {
+        left: 50px;
+        top: 1330px;
+        width: 220px;
+        height: 90px;
+      }
+      #shine-2 {
+        left: 400px;
+        top: 1340px;
+        width: 220px;
+        height: 85px;
+      }
+      #shine-3 {
+        left: 780px;
+        top: 1355px;
+        width: 210px;
+        height: 60px;
+      }
+
+      /* intro flash */
+      #flash {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 50% 40%, #fff3d6 0%, rgba(255, 190, 110, 0.6) 40%, rgba(255, 140, 60, 0) 75%);
+        opacity: 0;
+      }
+
+      /* live type */
+      .chip {
+        position: absolute;
+        left: 60px;
+        top: 230px;
+        padding: 14px 28px 12px;
+        background: #0b0f1c;
+        color: #fff;
+        font-size: 44px;
+        letter-spacing: 0.02em;
+        transform: rotate(-4deg);
+        box-shadow: 8px 8px 0 #2f7bff;
+      }
+      .chip b {
+        color: #ffb347;
+        font-weight: 400;
+      }
+      #cta {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 735px;
+        text-align: center;
+        color: #fff;
+        font-size: 92px;
+        line-height: 1;
+        letter-spacing: -0.01em;
+        text-shadow:
+          0 6px 0 #0b0f1c,
+          0 0 40px rgba(0, 0, 0, 0.55);
+        transform: rotate(-4deg);
+      }
+      #cta span {
+        display: inline-block;
+      }
+      #cta .sub {
+        display: block;
+        width: max-content;
+        margin: 22px auto 0;
+        padding: 12px 30px 10px;
+        background: #0b0f1c;
+        box-shadow: 8px 8px 0 #2f7bff;
+        font-size: 44px;
+        color: #ffcf6e;
+        text-shadow: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="10"
+      data-width="1080"
+      data-height="1920"
+    >
+      <div id="bg" class="clip" data-start="0" data-duration="10" data-track-index="0">
+        <div id="bg-img"></div>
+        <div id="bg-shade"></div>
+      </div>
+
+      <div id="stage" class="clip" data-start="0" data-duration="10" data-track-index="1">
+        <div id="cam">
+          <div id="pwrap">
+            <div id="poster"></div>
+            <div id="flare"></div>
+            <div id="shine-1" class="shine"><i></i></div>
+            <div id="shine-2" class="shine"><i></i></div>
+            <div id="shine-3" class="shine"><i></i></div>
+            <div id="contact-glow" class="glow"></div>
+            <div id="contact" class="crop"></div>
+            <div id="qr-glow" class="glow"></div>
+            <div id="qr" class="crop"></div>
+            <div id="banner" class="crop"></div>
+            <div id="logo" class="crop"></div>
+          </div>
+        </div>
+        <div id="flash"></div>
+      </div>
+
+      <div id="chips" class="clip" data-start="2.7" data-duration="4.1" data-track-index="2">
+        <div id="chip-1" class="chip"><b>01</b> HONDA ADV 160</div>
+        <div id="chip-2" class="chip"><b>02</b> HONDA X-ADV 750</div>
+        <div id="chip-3" class="chip"><b>03</b> YAMAHA MT-07</div>
+      </div>
+
+      <div id="cta-layer" class="clip" data-start="7.2" data-duration="2.8" data-track-index="3">
+        <div id="cta">
+          <span>RÉSERVE</span> <span>TON</span> <span>2 ROUES</span>
+          <span class="sub">sur WhatsApp ou Snap</span>
+        </div>
+      </div>
+
+      <audio id="sfx" src="assets/sfx.wav" data-start="0" data-duration="10" data-track-index="4" data-volume="0.9"></audio>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // Poster point (px, py) -> camera transform that centres it at zoom z.
+      const S = 1080 / 1054;
+      const focus = (px, py, z) => {
+        const X = S * px;
+        const Y = 157 + S * py;
+        return {
+          scale: z,
+          x: gsap.utils.clamp(1080 - 1080 * z, 0, 540 - z * X),
+          y: gsap.utils.clamp(1920 - (157 + 1606) * z, -157 * z, 960 - z * Y),
+        };
+      };
+      const ADV = focus(150, 1130, 1.7);
+      const XADV = focus(470, 1090, 1.6);
+      const MT07 = focus(850, 1110, 1.7);
+
+      /* ---------- ambience ---------- */
+      tl.fromTo("#bg-img", { scale: 1.25 }, { scale: 1.05, duration: 10, ease: "none" }, 0);
+      tl.fromTo("#flare", { opacity: 0.15, scale: 0.8 }, { opacity: 0.5, scale: 1.1, duration: 2.5, ease: "sine.inOut", yoyo: true, repeat: 3 }, 0);
+
+      /* ---------- A: logo slam + banner wipe over the blurred beach (0 – 2.6s) ---------- */
+      tl.set("#poster, #qr, #contact, #shine-1, #shine-2, #shine-3", { opacity: 0 }, 0);
+      tl.set("#poster", { clipPath: "circle(0px at 670px 825px)" }, 0);
+      // logo starts big in the centre of the screen, then settles into its poster slot
+      tl.fromTo(
+        "#logo",
+        { x: 10, y: 470, scale: 3.2, opacity: 0, filter: "blur(18px)" },
+        { scale: 1.75, opacity: 1, filter: "blur(0px)", duration: 0.5, ease: "power4.out" },
+        0.15
+      );
+      tl.fromTo("#flash", { opacity: 0 }, { opacity: 0.9, duration: 0.08, ease: "none" }, 0.3);
+      tl.to("#flash", { opacity: 0, duration: 0.6, ease: "power2.out" }, 0.38);
+      tl.fromTo("#logo", { rotation: 0 }, { rotation: -2.5, duration: 0.08, ease: "sine.inOut", yoyo: true, repeat: 3 }, 0.62);
+      tl.to("#logo", { scale: 1.65, duration: 1.3, ease: "sine.out" }, 0.7);
+
+      tl.fromTo(
+        "#banner",
+        { x: 0, y: 530, scale: 1.35, clipPath: "polygon(0px 48px, 0px 48px, 0px 125px, 0px 125px)" },
+        { clipPath: "polygon(0px 48px, 665px 0px, 665px 70px, 0px 125px)", duration: 0.55, ease: "power3.inOut" },
+        0.95
+      );
+      tl.fromTo("#banner", { rotation: 4 }, { rotation: 0, duration: 0.6, ease: "back.out(2)" }, 0.95);
+
+      // both fly to their exact place while the poster is revealed from the sun
+      tl.to("#logo", { x: 0, y: 0, scale: 1, duration: 0.6, ease: "power3.inOut" }, 2.0);
+      tl.to("#banner", { x: 0, y: 0, scale: 1, duration: 0.6, ease: "power3.inOut" }, 2.05);
+      tl.set("#poster", { opacity: 1 }, 2.0);
+      tl.to("#poster", { clipPath: "circle(1500px at 670px 825px)", duration: 0.75, ease: "power2.in" }, 2.0);
+
+      /* ---------- B: punch-ins on each bike (2.7 – 7.2s) ---------- */
+      tl.to("#cam", { ...ADV, duration: 0.5, ease: "power3.inOut" }, 2.75);
+      tl.to("#cam", { y: ADV.y - 40, duration: 1.0, ease: "none" }, 3.25);
+      tl.to("#cam", { ...XADV, duration: 0.4, ease: "power3.inOut" }, 4.25);
+      tl.to("#cam", { y: XADV.y - 40, duration: 0.9, ease: "none" }, 4.65);
+      tl.to("#cam", { ...MT07, duration: 0.4, ease: "power3.inOut" }, 5.55);
+      tl.to("#cam", { y: MT07.y - 40, duration: 0.85, ease: "none" }, 5.95);
+      tl.to("#cam", { x: 0, y: 0, scale: 1, duration: 0.55, ease: "power3.inOut" }, 6.8);
+      // whip blur on each transition
+      [2.75, 4.25, 5.55, 6.8].forEach((t) => {
+        tl.to("#cam", { filter: "blur(7px)", duration: 0.18, ease: "power1.in" }, t + 0.04);
+        tl.to("#cam", { filter: "blur(0px)", duration: 0.2, ease: "power1.out" }, t + 0.22);
+      });
+      // badge shines
+      tl.set("#shine-1, #shine-2, #shine-3", { opacity: 1 }, 2.7);
+      [
+        ["#shine-1 i", 3.3],
+        ["#shine-2 i", 4.75],
+        ["#shine-3 i", 6.05],
+      ].forEach(([sel, t]) => tl.fromTo(sel, { xPercent: 0 }, { xPercent: 560, duration: 0.6, ease: "power2.inOut" }, t));
+      // model chips
+      [
+        ["#chip-1", 3.05, 4.25],
+        ["#chip-2", 4.5, 5.55],
+        ["#chip-3", 5.8, 6.8],
+      ].forEach(([sel, inT, outT]) => {
+        tl.fromTo(sel, { x: -700, opacity: 1 }, { x: 0, duration: 0.4, ease: "power4.out" }, inT);
+        tl.to(sel, { x: -700, duration: 0.25, ease: "power2.in" }, outT - 0.05);
+      });
+
+      /* ---------- C: contact CTA (7.2 – 10s) ---------- */
+      tl.fromTo(
+        "#cta span",
+        { y: 120, opacity: 0, scale: 0.6 },
+        { y: 0, opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2.2)", stagger: 0.1 },
+        7.3
+      );
+      tl.fromTo("#contact", { opacity: 0, y: 160 }, { opacity: 1, y: 0, duration: 0.5, ease: "power4.out" }, 7.35);
+      tl.to("#contact", { scale: 1.08, duration: 0.3, ease: "power2.out" }, 7.85);
+      tl.set("#contact-glow", { scale: 1.08 }, 7.85);
+      tl.fromTo("#contact-glow", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 7.85);
+      tl.to("#contact, #contact-glow", { scale: 1.13, duration: 0.35, ease: "sine.inOut", yoyo: true, repeat: 4 }, 8.15);
+
+      tl.fromTo("#qr", { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1.15, duration: 0.5, ease: "back.out(2.5)" }, 7.7);
+      tl.set("#qr-glow", { scale: 1.15 }, 7.7);
+      tl.fromTo("#qr-glow", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 8.0);
+      tl.to("#qr-glow", { opacity: 0.35, duration: 0.4, ease: "sine.inOut", yoyo: true, repeat: 3 }, 8.3);
+      tl.to("#cam", { scale: 1.03, x: -16, y: -30, duration: 2.6, ease: "sine.out" }, 7.4);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
