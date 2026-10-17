@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Sabai Sabike — affiche vivante</title>
+    <script src="vendor/gsap.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #0b1630;
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #0b1630;
+      }
+      .clip {
+        position: absolute;
+        inset: 0;
+      }
+
+      /* blurred copy fills the bands above/below the poster */
+      #bg-img {
+        position: absolute;
+        inset: -80px;
+        background: url("assets/affiche.jpg") center / cover no-repeat;
+        filter: blur(38px) saturate(1.2) brightness(0.6);
+      }
+
+      /* camera: full stage, slow push */
+      #cam {
+        position: absolute;
+        inset: 0;
+        transform-origin: 540px 1000px;
+      }
+      /* poster space: native 1054x1567, scaled to 1080 wide, centred vertically */
+      #pwrap {
+        position: absolute;
+        left: 0;
+        top: 157px;
+        width: 1054px;
+        height: 1567px;
+        overflow: hidden;
+        transform: scale(1.02467);
+        transform-origin: 0 0;
+        box-shadow: 0 0 80px rgba(0, 0, 0, 0.6);
+      }
+      .layer {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 1054px;
+        height: 1567px;
+        background: url("assets/affiche.jpg") 0 0 / 1054px 1567px no-repeat;
+      }
+      /* each living region = a feathered copy of the poster, moved a few px */
+      #palm-tl {
+        -webkit-mask-image: radial-gradient(circle 230px at 110px 170px, #000 55%, transparent 100%);
+        mask-image: radial-gradient(circle 230px at 110px 170px, #000 55%, transparent 100%);
+        transform-origin: -200px 700px;
+      }
+      #palm-ml {
+        -webkit-mask-image: radial-gradient(circle 250px at 170px 580px, #000 55%, transparent 100%);
+        mask-image: radial-gradient(circle 250px at 170px 580px, #000 55%, transparent 100%);
+        transform-origin: -150px 1000px;
+      }
+      #palm-tr {
+        -webkit-mask-image: radial-gradient(circle 200px at 940px 150px, #000 50%, transparent 100%);
+        mask-image: radial-gradient(circle 200px at 940px 150px, #000 50%, transparent 100%);
+        transform-origin: 1250px 700px;
+      }
+      #palm-r {
+        -webkit-mask-image: radial-gradient(circle 150px at 1010px 640px, #000 50%, transparent 100%);
+        mask-image: radial-gradient(circle 150px at 1010px 640px, #000 50%, transparent 100%);
+        transform-origin: 1300px 900px;
+      }
+      #clouds {
+        -webkit-mask-image: radial-gradient(ellipse 300px 110px at 480px 650px, #000 40%, transparent 100%);
+        mask-image: radial-gradient(ellipse 300px 110px at 480px 650px, #000 40%, transparent 100%);
+      }
+
+      #sun {
+        position: absolute;
+        left: 670px;
+        top: 826px;
+        width: 700px;
+        height: 700px;
+        margin: -350px 0 0 -350px;
+        background: radial-gradient(circle, rgba(255, 236, 180, 0.9) 0%, rgba(255, 160, 70, 0.35) 20%, rgba(255, 120, 40, 0) 58%);
+        mix-blend-mode: screen;
+      }
+      .glint {
+        position: absolute;
+        width: 10px;
+        height: 4px;
+        margin: -2px 0 0 -5px;
+        border-radius: 50%;
+        background: #fff6dc;
+        box-shadow: 0 0 8px 3px rgba(255, 220, 150, 0.8);
+        mix-blend-mode: screen;
+        opacity: 0;
+      }
+      .drl {
+        position: absolute;
+        width: 90px;
+        height: 60px;
+        margin: -30px 0 0 -45px;
+        border-radius: 50%;
+        background: radial-gradient(ellipse, rgba(225, 240, 255, 0.85) 0%, rgba(170, 210, 255, 0.3) 40%, rgba(170, 210, 255, 0) 70%);
+        mix-blend-mode: screen;
+        opacity: 0;
+      }
+      #shine {
+        position: absolute;
+        left: 70px;
+        top: 1440px;
+        width: 940px;
+        height: 120px;
+        overflow: hidden;
+      }
+      #shine i {
+        position: absolute;
+        top: -20%;
+        left: -20%;
+        width: 14%;
+        height: 140%;
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0));
+        transform: skewX(-20deg);
+        mix-blend-mode: overlay;
+      }
+      #fade {
+        position: absolute;
+        inset: 0;
+        background: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="10"
+      data-width="1080"
+      data-height="1920"
+    >
+      <div id="bg" class="clip" data-start="0" data-duration="10" data-track-index="0">
+        <div id="bg-img"></div>
+      </div>
+
+      <div id="stage" class="clip" data-start="0" data-duration="10" data-track-index="1">
+        <div id="cam">
+          <div id="pwrap">
+            <div id="poster" class="layer"></div>
+            <div id="clouds" class="layer"></div>
+            <div id="palm-ml" class="layer"></div>
+            <div id="palm-r" class="layer"></div>
+            <div id="palm-tl" class="layer"></div>
+            <div id="palm-tr" class="layer"></div>
+            <div id="sun"></div>
+            <div id="glints"></div>
+            <div class="drl" style="left: 140px; top: 1012px"></div>
+            <div class="drl" style="left: 232px; top: 1040px"></div>
+            <div class="drl" style="left: 495px; top: 940px"></div>
+            <div class="drl" style="left: 605px; top: 958px"></div>
+            <div class="drl" style="left: 935px; top: 992px"></div>
+            <div id="shine"><i></i></div>
+          </div>
+        </div>
+        <div id="fade"></div>
+      </div>
+
+      <audio id="sea" src="assets/vagues.wav" data-start="0" data-duration="10" data-track-index="2" data-volume="0.8"></audio>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // sea glints along the sun's reflection (fixed positions: deterministic)
+      const GLINTS = [
+        [668, 862, 0.2], [655, 878, 1.1], [684, 890, 0.6], [642, 905, 1.7], [700, 918, 0.9],
+        [660, 932, 2.3], [690, 948, 0.4], [630, 962, 1.4], [712, 975, 2.0], [672, 990, 0.7],
+        [598, 935, 2.6], [742, 955, 1.9], [620, 1002, 0.1], [726, 1010, 1.2],
+      ];
+      const box = document.getElementById("glints");
+      GLINTS.forEach(([x, y, t], i) => {
+        const g = document.createElement("div");
+        g.className = "glint";
+        g.id = "glint-" + i;
+        g.style.left = x + "px";
+        g.style.top = y + "px";
+        box.appendChild(g);
+        for (let k = t; k < 9.6; k += 2.4 + (i % 3) * 0.35) {
+          tl.to(g, { opacity: 0.9, duration: 0.25, ease: "sine.out" }, k);
+          tl.to(g, { opacity: 0, duration: 0.45, ease: "sine.in" }, k + 0.25);
+        }
+      });
+
+      tl.fromTo("#fade", { opacity: 1 }, { opacity: 0, duration: 0.5, ease: "power1.out" }, 0);
+      tl.fromTo("#cam", { scale: 1 }, { scale: 1.045, duration: 10, ease: "sine.inOut" }, 0);
+      tl.fromTo("#bg-img", { scale: 1.1 }, { scale: 1.02, duration: 10, ease: "none" }, 0);
+
+      // palms sway gently (a few px at the tips)
+      const sway = (sel, amp, period, delay) => {
+        tl.set(sel, { rotation: -amp }, 0);
+        tl.to(sel, { rotation: amp, duration: period / 2, ease: "sine.inOut", yoyo: true, repeat: Math.ceil(20 / period) }, delay);
+      };
+      sway("#palm-tl", 0.45, 3.4, 0);
+      sway("#palm-ml", 0.4, 3.8, 0.4);
+      sway("#palm-tr", 0.5, 3.1, 0.2);
+      sway("#palm-r", 0.45, 3.6, 0.6);
+
+      tl.fromTo("#clouds", { x: 0 }, { x: -14, duration: 10, ease: "none" }, 0);
+      tl.fromTo("#sun", { opacity: 0.25, scale: 0.92 }, { opacity: 0.5, scale: 1.06, duration: 2.5, ease: "sine.inOut", yoyo: true, repeat: 3 }, 0);
+
+      // headlights switch on, then breathe
+      tl.to(".drl", { opacity: 0.9, duration: 0.08, ease: "none", stagger: 0.05 }, 1.2);
+      tl.to(".drl", { opacity: 0.3, duration: 0.08, ease: "none", stagger: 0.05 }, 1.3);
+      tl.to(".drl", { opacity: 0.8, duration: 0.25, ease: "power2.out", stagger: 0.05 }, 1.42);
+      tl.to(".drl", { opacity: 0.55, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 4 }, 2.0);
+
+      // one shine across the contact bar near the end
+      tl.fromTo("#shine i", { xPercent: 0 }, { xPercent: 1050, duration: 1.1, ease: "power2.inOut" }, 6.6);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
